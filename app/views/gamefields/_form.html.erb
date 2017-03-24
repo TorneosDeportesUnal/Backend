@@ -1,0 +1,32 @@
+<%= form_for(gamefield) do |f| %>
+  <% if gamefield.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(gamefield.errors.count, "error") %> prohibited this gamefield from being saved:</h2>
+
+      <ul>
+      <% gamefield.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :discipline %>
+    <%= f.text_field :discipline %>
+  </div>
+
+  <div class="field">
+    <%= f.label :match_id %>
+    <%= f.text_field :match_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

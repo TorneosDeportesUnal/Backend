@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Discipline:</strong>
+  <%= @modality.discipline %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @modality.gender %>
+</p>
+
+<p>
+  <strong>Tournament:</strong>
+  <%= @modality.tournament %>
+</p>
+
+<%= link_to 'Edit', edit_modality_path(@modality) %> |
+<%= link_to 'Back', modalities_path %>
