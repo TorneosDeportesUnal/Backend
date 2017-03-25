@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @gamefield.location %>
+</p>
+
+<p>
+  <strong>Discipline:</strong>
+  <%= @gamefield.discipline %>
+</p>
+
+<p>
+  <strong>Match:</strong>
+  <%= @gamefield.match %>
+</p>
+
+<%= link_to 'Edit', edit_gamefield_path(@gamefield) %> |
+<%= link_to 'Back', gamefields_path %>

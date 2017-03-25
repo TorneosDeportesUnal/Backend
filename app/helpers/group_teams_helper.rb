@@ -1,0 +1,2 @@
+module GroupTeamsHelper
+end

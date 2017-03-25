@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Position in group:</strong>
+  <%= @group_team.position_in_group %>
+</p>
+
+<p>
+  <strong>Wins:</strong>
+  <%= @group_team.wins %>
+</p>
+
+<p>
+  <strong>Loses:</strong>
+  <%= @group_team.loses %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @group_team.group %>
+</p>
+
+<p>
+  <strong>Team:</strong>
+  <%= @group_team.team %>
+</p>
+
+<%= link_to 'Edit', edit_group_team_path(@group_team) %> |
+<%= link_to 'Back', group_teams_path %>

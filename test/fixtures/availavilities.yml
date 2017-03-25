@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day_of_week: MyString
+  begin_hour: MyString
+  end_hour: MyString
+  team: one
+
+two:
+  day_of_week: MyString
+  begin_hour: MyString
+  end_hour: MyString
+  team: two
