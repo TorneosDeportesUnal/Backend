@@ -2,16 +2,20 @@
 
 one:
   games_played: 1
-  points_market: 1
+  points_marked: 1
   assist: 1
-  faults: 1
+  yellow_cards: 1
+  red_cards: 1
+  white_cards: 1
   player: one
   team: one
 
 two:
   games_played: 1
-  points_market: 1
+  points_marked: 1
   assist: 1
-  faults: 1
+  yellow_cards: 1
+  red_cards: 1
+  white_cards: 1
   player: two
   team: two

@@ -6,43 +6,33 @@ class TournamentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get tournaments_url
-    assert_response :success
-  end
-
-  test "should get new" do
-    get new_tournament_url
+    get tournaments_url, as: :json
     assert_response :success
   end
 
   test "should create tournament" do
     assert_difference('Tournament.count') do
-      post tournaments_url, params: { tournament: { begin_date: @tournament.begin_date, end_date: @tournament.end_date, semester: @tournament.semester } }
+      post tournaments_url, params: { tournament: { begin_date: @tournament.begin_date, end_date: @tournament.end_date } }, as: :json
     end
 
-    assert_redirected_to tournament_url(Tournament.last)
+    assert_response 201
   end
 
   test "should show tournament" do
-    get tournament_url(@tournament)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_tournament_url(@tournament)
+    get tournament_url(@tournament), as: :json
     assert_response :success
   end
 
   test "should update tournament" do
-    patch tournament_url(@tournament), params: { tournament: { begin_date: @tournament.begin_date, end_date: @tournament.end_date, semester: @tournament.semester } }
-    assert_redirected_to tournament_url(@tournament)
+    patch tournament_url(@tournament), params: { tournament: { begin_date: @tournament.begin_date, end_date: @tournament.end_date } }, as: :json
+    assert_response 200
   end
 
   test "should destroy tournament" do
     assert_difference('Tournament.count', -1) do
-      delete tournament_url(@tournament)
+      delete tournament_url(@tournament), as: :json
     end
 
-    assert_redirected_to tournaments_url
+    assert_response 204
   end
 end

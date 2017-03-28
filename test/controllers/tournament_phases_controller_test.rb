@@ -6,43 +6,33 @@ class TournamentPhasesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get tournament_phases_url
-    assert_response :success
-  end
-
-  test "should get new" do
-    get new_tournament_phase_url
+    get tournament_phases_url, as: :json
     assert_response :success
   end
 
   test "should create tournament_phase" do
     assert_difference('TournamentPhase.count') do
-      post tournament_phases_url, params: { tournament_phase: { phase_type: @tournament_phase.phase_type, tournament_id: @tournament_phase.tournament_id } }
+      post tournament_phases_url, params: { tournament_phase: { phase_number: @tournament_phase.phase_number, phase_type: @tournament_phase.phase_type, tournament_id: @tournament_phase.tournament_id } }, as: :json
     end
 
-    assert_redirected_to tournament_phase_url(TournamentPhase.last)
+    assert_response 201
   end
 
   test "should show tournament_phase" do
-    get tournament_phase_url(@tournament_phase)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_tournament_phase_url(@tournament_phase)
+    get tournament_phase_url(@tournament_phase), as: :json
     assert_response :success
   end
 
   test "should update tournament_phase" do
-    patch tournament_phase_url(@tournament_phase), params: { tournament_phase: { phase_type: @tournament_phase.phase_type, tournament_id: @tournament_phase.tournament_id } }
-    assert_redirected_to tournament_phase_url(@tournament_phase)
+    patch tournament_phase_url(@tournament_phase), params: { tournament_phase: { phase_number: @tournament_phase.phase_number, phase_type: @tournament_phase.phase_type, tournament_id: @tournament_phase.tournament_id } }, as: :json
+    assert_response 200
   end
 
   test "should destroy tournament_phase" do
     assert_difference('TournamentPhase.count', -1) do
-      delete tournament_phase_url(@tournament_phase)
+      delete tournament_phase_url(@tournament_phase), as: :json
     end
 
-    assert_redirected_to tournament_phases_url
+    assert_response 204
   end
 end

@@ -1,13 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  date: MyString
-  result: 1
-  id_team_winner: 1
+  game_field_location: MyString
+  date: 2017-03-28 02:22:33
+  judges: MyString
+  observation: MyString
+  winner_team: MyString
+  loser_team: MyString
   group: one
 
 two:
-  date: MyString
-  result: 1
-  id_team_winner: 1
+  game_field_location: MyString
+  date: 2017-03-28 02:22:33
+  judges: MyString
+  observation: MyString
+  winner_team: MyString
+  loser_team: MyString
   group: two

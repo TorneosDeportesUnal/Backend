@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  outcome: 1
+  points_gained: 1
+  goals: 1
+  match: one
+  team: one
+
+two:
+  outcome: 1
+  points_gained: 1
+  goals: 1
+  match: two
+  team: two

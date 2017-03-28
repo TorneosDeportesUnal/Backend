@@ -10,62 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170324095726) do
+ActiveRecord::Schema.define(version: 20170328072934) do
 
   create_table "availavilities", force: :cascade do |t|
-    t.string   "day_of_week"
-    t.string   "begin_hour"
-    t.string   "end_hour"
+    t.date     "day_of_week"
+    t.datetime "begin_hour"
+    t.datetime "end_hour"
     t.integer  "team_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["team_id"], name: "index_availavilities_on_team_id"
   end
 
-  create_table "gamefields", force: :cascade do |t|
-    t.string   "location"
-    t.string   "discipline"
-    t.integer  "match_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["match_id"], name: "index_gamefields_on_match_id"
-  end
-
-  create_table "group_teams", force: :cascade do |t|
-    t.integer  "position_in_group"
-    t.integer  "wins"
-    t.integer  "loses"
-    t.integer  "group_id"
-    t.integer  "team_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.index ["group_id"], name: "index_group_teams_on_group_id"
-    t.index ["team_id"], name: "index_group_teams_on_team_id"
-  end
-
   create_table "groups", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "winners_number"
     t.integer  "tournament_phase_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.index ["tournament_phase_id"], name: "index_groups_on_tournament_phase_id"
   end
 
-  create_table "match_teams", force: :cascade do |t|
-    t.integer  "match_id"
-    t.integer  "team_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["match_id"], name: "index_match_teams_on_match_id"
-    t.index ["team_id"], name: "index_match_teams_on_team_id"
-  end
-
   create_table "matches", force: :cascade do |t|
-    t.string   "date"
-    t.integer  "result"
-    t.integer  "id_team_winner"
+    t.string   "game_field_location"
+    t.datetime "date"
+    t.string   "judges"
+    t.string   "observation"
+    t.string   "winner_team"
+    t.string   "loser_team"
     t.integer  "group_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.index ["group_id"], name: "index_matches_on_group_id"
   end
 
@@ -85,18 +60,56 @@ ActiveRecord::Schema.define(version: 20170324095726) do
     t.string   "last_name"
     t.string   "email"
     t.string   "gender"
+    t.string   "semester"
+    t.string   "career"
     t.integer  "age"
     t.integer  "contact_phone"
+    t.integer  "contact_emergency_phone"
+    t.string   "contact_emergency_name"
     t.string   "eps"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "prizes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "team_groups", force: :cascade do |t|
+    t.integer  "position_in_group"
+    t.integer  "group_draw"
+    t.integer  "group_wins"
+    t.integer  "group_loses"
+    t.integer  "group_id"
+    t.integer  "team_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["group_id"], name: "index_team_groups_on_group_id"
+    t.index ["team_id"], name: "index_team_groups_on_team_id"
+  end
+
+  create_table "team_matches", force: :cascade do |t|
+    t.integer  "outcome"
+    t.integer  "points_gained"
+    t.integer  "goals"
+    t.integer  "match_id"
+    t.integer  "team_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.index ["match_id"], name: "index_team_matches_on_match_id"
+    t.index ["team_id"], name: "index_team_matches_on_team_id"
   end
 
   create_table "team_players", force: :cascade do |t|
     t.integer  "games_played"
-    t.integer  "points_market"
+    t.integer  "points_marked"
     t.integer  "assist"
-    t.integer  "faults"
+    t.integer  "yellow_cards"
+    t.integer  "red_cards"
+    t.integer  "white_cards"
     t.integer  "player_id"
     t.integer  "team_id"
     t.datetime "created_at",    null: false
@@ -108,12 +121,22 @@ ActiveRecord::Schema.define(version: 20170324095726) do
   create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.string   "coach_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "delegate"
+    t.string   "captain"
+    t.string   "uniform_color"
+    t.integer  "goals_against"
+    t.integer  "goals_in_favor"
+    t.integer  "goals_difference"
+    t.integer  "wins"
+    t.integer  "loses"
+    t.integer  "draws"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "tournament_phases", force: :cascade do |t|
     t.string   "phase_type"
+    t.integer  "phase_number"
     t.integer  "tournament_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
@@ -121,9 +144,8 @@ ActiveRecord::Schema.define(version: 20170324095726) do
   end
 
   create_table "tournaments", force: :cascade do |t|
-    t.string   "begin_date"
-    t.string   "end_date"
-    t.string   "semester"
+    t.datetime "begin_date"
+    t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

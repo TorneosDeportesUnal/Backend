@@ -2,8 +2,10 @@
 
 one:
   phase_type: MyString
+  phase_number: 1
   tournament: one
 
 two:
   phase_type: MyString
+  phase_number: 1
   tournament: two

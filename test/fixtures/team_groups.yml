@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  position_in_group: 1
+  position_in_group: 1
+  group_draw: 1
+  group_wins: 1
+  group_loses: 1
+  group: one
+  team: one
+
+two:
+  position_in_group: 1
+  position_in_group: 1
+  group_draw: 1
+  group_wins: 1
+  group_loses: 1
+  group: two
+  team: two

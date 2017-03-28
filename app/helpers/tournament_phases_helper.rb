@@ -1,2 +1,0 @@
-module TournamentPhasesHelper
-end
