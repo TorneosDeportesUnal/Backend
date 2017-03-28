@@ -1,9 +1,9 @@
 class Team < ApplicationRecord
-	has_many :team_player
-	has_many :availability
-	has_many :team_match
-	has_many :team_group
-	has_many :prize
+	has_many :team_players
+	has_many :availabilitys
+	has_many :team_matchs
+	has_many :team_groups
+	has_many :prizes
 	belongs_to :modality
 	belongs_to :tournament	
 end

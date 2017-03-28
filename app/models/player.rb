@@ -1,5 +1,5 @@
 class Player < ApplicationRecord
-	has_many :team_player
+	has_many :team_players
 
 	validates :document,  numericality: { only_integer: true }, uniqueness: true
 	validates :contact_phone,  numericality: { only_integer: true }
