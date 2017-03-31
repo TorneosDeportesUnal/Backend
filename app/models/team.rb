@@ -14,4 +14,13 @@ class Team < ApplicationRecord
 	belongs_to :modality
 	belongs_to :tournament	
 	
+	def self.teams()
+		select("*")
+	end
+
+	def self.team_by_id(id_team)
+		find_by_id(id_team)
+	end
+
+
 end

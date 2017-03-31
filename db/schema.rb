@@ -158,6 +158,7 @@ ActiveRecord::Schema.define(version: 20170328224812) do
     t.integer  "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "modality_id"
     t.index ["team_id"], name: "index_tournaments_on_team_id", using: :btree
   end
 
