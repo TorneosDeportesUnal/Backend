@@ -5,7 +5,11 @@ class Modality < ApplicationRecord
     	message: "masculino o femenino" }
 
 
-	def self.modality_by_id(id_tournament)
-		joins(:tournaments).select("*")
+	def self.modality_by_tournament_id(id_tournament)
+		includes(:tournaments).select("tournaments.*, modalities.*").from("tournaments, modalities").where("modalities.tournament_id=tournaments.id")
+	end
+	
+	def self.modality_by_team_id(id_team)
+		includes(:teams).select("teams.*, modalities.*").from("teams, modalities").where("modalities.team_id=teams.id")
 	end
 end
