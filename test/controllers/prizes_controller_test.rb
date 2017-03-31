@@ -6,33 +6,43 @@ class PrizesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get prizes_url, as: :json
+    get prizes_url
+    assert_response :success
+  end
+
+  test "should get new" do
+    get new_prize_url
     assert_response :success
   end
 
   test "should create prize" do
     assert_difference('Prize.count') do
-      post prizes_url, params: { prize: { description: @prize.description, name: @prize.name } }, as: :json
+      post prizes_url, params: { prize: { description: @prize.description, name: @prize.name } }
     end
 
-    assert_response 201
+    assert_redirected_to prize_url(Prize.last)
   end
 
   test "should show prize" do
-    get prize_url(@prize), as: :json
+    get prize_url(@prize)
+    assert_response :success
+  end
+
+  test "should get edit" do
+    get edit_prize_url(@prize)
     assert_response :success
   end
 
   test "should update prize" do
-    patch prize_url(@prize), params: { prize: { description: @prize.description, name: @prize.name } }, as: :json
-    assert_response 200
+    patch prize_url(@prize), params: { prize: { description: @prize.description, name: @prize.name } }
+    assert_redirected_to prize_url(@prize)
   end
 
   test "should destroy prize" do
     assert_difference('Prize.count', -1) do
-      delete prize_url(@prize), as: :json
+      delete prize_url(@prize)
     end
 
-    assert_response 204
+    assert_redirected_to prizes_url
   end
 end

@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328072934) do
+ActiveRecord::Schema.define(version: 20170328224812) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "availavilities", force: :cascade do |t|
     t.date     "day_of_week"
@@ -19,7 +22,7 @@ ActiveRecord::Schema.define(version: 20170328072934) do
     t.integer  "team_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["team_id"], name: "index_availavilities_on_team_id"
+    t.index ["team_id"], name: "index_availavilities_on_team_id", using: :btree
   end
 
   create_table "groups", force: :cascade do |t|
@@ -28,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170328072934) do
     t.integer  "tournament_phase_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.index ["tournament_phase_id"], name: "index_groups_on_tournament_phase_id"
+    t.index ["tournament_phase_id"], name: "index_groups_on_tournament_phase_id", using: :btree
   end
 
   create_table "matches", force: :cascade do |t|
@@ -41,16 +44,18 @@ ActiveRecord::Schema.define(version: 20170328072934) do
     t.integer  "group_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.index ["group_id"], name: "index_matches_on_group_id"
+    t.index ["group_id"], name: "index_matches_on_group_id", using: :btree
   end
 
   create_table "modalities", force: :cascade do |t|
     t.string   "discipline"
     t.string   "gender"
     t.integer  "tournament_id"
+    t.integer  "team_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["tournament_id"], name: "index_modalities_on_tournament_id"
+    t.index ["team_id"], name: "index_modalities_on_team_id", using: :btree
+    t.index ["tournament_id"], name: "index_modalities_on_tournament_id", using: :btree
   end
 
   create_table "players", force: :cascade do |t|
@@ -74,8 +79,12 @@ ActiveRecord::Schema.define(version: 20170328072934) do
   create_table "prizes", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "team_id"
+    t.integer  "tournament_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["team_id"], name: "index_prizes_on_team_id", using: :btree
+    t.index ["tournament_id"], name: "index_prizes_on_tournament_id", using: :btree
   end
 
   create_table "team_groups", force: :cascade do |t|
@@ -87,8 +96,8 @@ ActiveRecord::Schema.define(version: 20170328072934) do
     t.integer  "team_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.index ["group_id"], name: "index_team_groups_on_group_id"
-    t.index ["team_id"], name: "index_team_groups_on_team_id"
+    t.index ["group_id"], name: "index_team_groups_on_group_id", using: :btree
+    t.index ["team_id"], name: "index_team_groups_on_team_id", using: :btree
   end
 
   create_table "team_matches", force: :cascade do |t|
@@ -99,8 +108,8 @@ ActiveRecord::Schema.define(version: 20170328072934) do
     t.integer  "team_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["match_id"], name: "index_team_matches_on_match_id"
-    t.index ["team_id"], name: "index_team_matches_on_team_id"
+    t.index ["match_id"], name: "index_team_matches_on_match_id", using: :btree
+    t.index ["team_id"], name: "index_team_matches_on_team_id", using: :btree
   end
 
   create_table "team_players", force: :cascade do |t|
@@ -114,8 +123,8 @@ ActiveRecord::Schema.define(version: 20170328072934) do
     t.integer  "team_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["player_id"], name: "index_team_players_on_player_id"
-    t.index ["team_id"], name: "index_team_players_on_team_id"
+    t.index ["player_id"], name: "index_team_players_on_player_id", using: :btree
+    t.index ["team_id"], name: "index_team_players_on_team_id", using: :btree
   end
 
   create_table "teams", force: :cascade do |t|
@@ -140,14 +149,31 @@ ActiveRecord::Schema.define(version: 20170328072934) do
     t.integer  "tournament_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["tournament_id"], name: "index_tournament_phases_on_tournament_id"
+    t.index ["tournament_id"], name: "index_tournament_phases_on_tournament_id", using: :btree
   end
 
   create_table "tournaments", force: :cascade do |t|
     t.datetime "begin_date"
     t.datetime "end_date"
+    t.integer  "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_tournaments_on_team_id", using: :btree
   end
 
+  add_foreign_key "availavilities", "teams"
+  add_foreign_key "groups", "tournament_phases"
+  add_foreign_key "matches", "groups"
+  add_foreign_key "modalities", "teams"
+  add_foreign_key "modalities", "tournaments"
+  add_foreign_key "prizes", "teams"
+  add_foreign_key "prizes", "tournaments"
+  add_foreign_key "team_groups", "groups"
+  add_foreign_key "team_groups", "teams"
+  add_foreign_key "team_matches", "matches"
+  add_foreign_key "team_matches", "teams"
+  add_foreign_key "team_players", "players"
+  add_foreign_key "team_players", "teams"
+  add_foreign_key "tournament_phases", "tournaments"
+  add_foreign_key "tournaments", "teams"
 end

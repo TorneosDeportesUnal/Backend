@@ -6,33 +6,43 @@ class MatchesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get matches_url, as: :json
+    get matches_url
+    assert_response :success
+  end
+
+  test "should get new" do
+    get new_match_url
     assert_response :success
   end
 
   test "should create match" do
     assert_difference('Match.count') do
-      post matches_url, params: { match: { date: @match.date, game_field_location: @match.game_field_location, group_id: @match.group_id, judges: @match.judges, loser_team: @match.loser_team, observation: @match.observation, winner_team: @match.winner_team } }, as: :json
+      post matches_url, params: { match: { date: @match.date, game_field_location: @match.game_field_location, group_id: @match.group_id, judges: @match.judges, loser_team: @match.loser_team, observation: @match.observation, winner_team: @match.winner_team } }
     end
 
-    assert_response 201
+    assert_redirected_to match_url(Match.last)
   end
 
   test "should show match" do
-    get match_url(@match), as: :json
+    get match_url(@match)
+    assert_response :success
+  end
+
+  test "should get edit" do
+    get edit_match_url(@match)
     assert_response :success
   end
 
   test "should update match" do
-    patch match_url(@match), params: { match: { date: @match.date, game_field_location: @match.game_field_location, group_id: @match.group_id, judges: @match.judges, loser_team: @match.loser_team, observation: @match.observation, winner_team: @match.winner_team } }, as: :json
-    assert_response 200
+    patch match_url(@match), params: { match: { date: @match.date, game_field_location: @match.game_field_location, group_id: @match.group_id, judges: @match.judges, loser_team: @match.loser_team, observation: @match.observation, winner_team: @match.winner_team } }
+    assert_redirected_to match_url(@match)
   end
 
   test "should destroy match" do
     assert_difference('Match.count', -1) do
-      delete match_url(@match), as: :json
+      delete match_url(@match)
     end
 
-    assert_response 204
+    assert_redirected_to matches_url
   end
 end

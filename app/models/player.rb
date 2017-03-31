@@ -1,8 +1,9 @@
 class Player < ApplicationRecord
 	has_many :team_players
-
+	has_many :teams, through: :team_players
+	
 	validates :document,  numericality: { only_integer: true }, uniqueness: true
-	validates :contact_phone,  numericality: { only_integer: true }
+	validates :contact_phone, numericality: { only_integer: true }
 	validates :age,  numericality: { only_integer: true }
 	validates :document_type, inclusion: { in: %w(cc ti),
     	message: "cc o ti" }

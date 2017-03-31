@@ -1,0 +1,2 @@
+module AvailavilitiesHelper
+end

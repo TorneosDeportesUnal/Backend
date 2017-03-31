@@ -1,0 +1,72 @@
+<%= form_for(team) do |f| %>
+  <% if team.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
+
+      <ul>
+      <% team.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :coach_name %>
+    <%= f.text_field :coach_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :delegate %>
+    <%= f.text_field :delegate %>
+  </div>
+
+  <div class="field">
+    <%= f.label :captain %>
+    <%= f.text_field :captain %>
+  </div>
+
+  <div class="field">
+    <%= f.label :uniform_color %>
+    <%= f.text_field :uniform_color %>
+  </div>
+
+  <div class="field">
+    <%= f.label :goals_against %>
+    <%= f.number_field :goals_against %>
+  </div>
+
+  <div class="field">
+    <%= f.label :goals_in_favor %>
+    <%= f.number_field :goals_in_favor %>
+  </div>
+
+  <div class="field">
+    <%= f.label :goals_difference %>
+    <%= f.number_field :goals_difference %>
+  </div>
+
+  <div class="field">
+    <%= f.label :wins %>
+    <%= f.number_field :wins %>
+  </div>
+
+  <div class="field">
+    <%= f.label :loses %>
+    <%= f.number_field :loses %>
+  </div>
+
+  <div class="field">
+    <%= f.label :draws %>
+    <%= f.number_field :draws %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

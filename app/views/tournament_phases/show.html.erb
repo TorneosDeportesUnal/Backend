@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Phase type:</strong>
+  <%= @tournament_phase.phase_type %>
+</p>
+
+<p>
+  <strong>Phase number:</strong>
+  <%= @tournament_phase.phase_number %>
+</p>
+
+<p>
+  <strong>Tournament:</strong>
+  <%= @tournament_phase.tournament %>
+</p>
+
+<%= link_to 'Edit', edit_tournament_phase_path(@tournament_phase) %> |
+<%= link_to 'Back', tournament_phases_path %>

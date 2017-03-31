@@ -2,12 +2,12 @@
 
 one:
   day_of_week: 2017-03-28
-  begin_hour: 2017-03-28 02:22:50
-  end_hour: 2017-03-28 02:22:50
+  begin_hour: 2017-03-28 17:48:12
+  end_hour: 2017-03-28 17:48:12
   team: one
 
 two:
   day_of_week: 2017-03-28
-  begin_hour: 2017-03-28 02:22:50
-  end_hour: 2017-03-28 02:22:50
+  begin_hour: 2017-03-28 17:48:12
+  end_hour: 2017-03-28 17:48:12
   team: two

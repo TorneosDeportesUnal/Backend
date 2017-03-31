@@ -1,41 +1,64 @@
 class ModalitiesController < ApplicationController
-  before_action :set_modality, only: [:show, :update, :destroy]
+  before_action :set_modality, only: [:show, :edit, :update, :destroy]
 
   # GET /modalities
+  # GET /modalities.json
   def index
     @modalities = Modality.all
-
-    render json: @modalities
   end
 
   # GET /modalities/1
+  # GET /modalities/1.json
   def show
-    render json: @modality
+  end
+
+  # GET /modalities/new
+  def new
+    @modality = Modality.new
+  end
+
+  # GET /modalities/1/edit
+  def edit
   end
 
   # POST /modalities
+  # POST /modalities.json
   def create
     @modality = Modality.new(modality_params)
 
-    if @modality.save
-      render json: @modality, status: :created, location: @modality
-    else
-      render json: @modality.errors, status: :unprocessable_entity
+    respond_to do |format|
+      if @modality.save
+        format.html { redirect_to @modality, notice: 'Modality was successfully created.' }
+        format.json { render :show, status: :created, location: @modality }
+      else
+        format.html { render :new }
+        format.json { render json: @modality.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   # PATCH/PUT /modalities/1
+  # PATCH/PUT /modalities/1.json
   def update
-    if @modality.update(modality_params)
-      render json: @modality
-    else
-      render json: @modality.errors, status: :unprocessable_entity
+    respond_to do |format|
+      if @modality.update(modality_params)
+        format.html { redirect_to @modality, notice: 'Modality was successfully updated.' }
+        format.json { render :show, status: :ok, location: @modality }
+      else
+        format.html { render :edit }
+        format.json { render json: @modality.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   # DELETE /modalities/1
+  # DELETE /modalities/1.json
   def destroy
     @modality.destroy
+    respond_to do |format|
+      format.html { redirect_to modalities_url, notice: 'Modality was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
@@ -44,7 +67,7 @@ class ModalitiesController < ApplicationController
       @modality = Modality.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+    # Never trust parameters from the scary internet, only allow the white list through.
     def modality_params
       params.require(:modality).permit(:discipline, :gender, :tournament_id)
     end

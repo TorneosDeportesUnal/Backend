@@ -6,33 +6,43 @@ class ModalitiesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get modalities_url, as: :json
+    get modalities_url
+    assert_response :success
+  end
+
+  test "should get new" do
+    get new_modality_url
     assert_response :success
   end
 
   test "should create modality" do
     assert_difference('Modality.count') do
-      post modalities_url, params: { modality: { discipline: @modality.discipline, gender: @modality.gender, tournament_id: @modality.tournament_id } }, as: :json
+      post modalities_url, params: { modality: { discipline: @modality.discipline, gender: @modality.gender, tournament_id: @modality.tournament_id } }
     end
 
-    assert_response 201
+    assert_redirected_to modality_url(Modality.last)
   end
 
   test "should show modality" do
-    get modality_url(@modality), as: :json
+    get modality_url(@modality)
+    assert_response :success
+  end
+
+  test "should get edit" do
+    get edit_modality_url(@modality)
     assert_response :success
   end
 
   test "should update modality" do
-    patch modality_url(@modality), params: { modality: { discipline: @modality.discipline, gender: @modality.gender, tournament_id: @modality.tournament_id } }, as: :json
-    assert_response 200
+    patch modality_url(@modality), params: { modality: { discipline: @modality.discipline, gender: @modality.gender, tournament_id: @modality.tournament_id } }
+    assert_redirected_to modality_url(@modality)
   end
 
   test "should destroy modality" do
     assert_difference('Modality.count', -1) do
-      delete modality_url(@modality), as: :json
+      delete modality_url(@modality)
     end
 
-    assert_response 204
+    assert_redirected_to modalities_url
   end
 end

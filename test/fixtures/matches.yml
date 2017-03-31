@@ -2,7 +2,7 @@
 
 one:
   game_field_location: MyString
-  date: 2017-03-28 02:22:33
+  date: 2017-03-28 17:47:53
   judges: MyString
   observation: MyString
   winner_team: MyString
@@ -11,7 +11,7 @@ one:
 
 two:
   game_field_location: MyString
-  date: 2017-03-28 02:22:33
+  date: 2017-03-28 17:47:53
   judges: MyString
   observation: MyString
   winner_team: MyString

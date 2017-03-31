@@ -9,9 +9,17 @@ default: &default
   pool: 5
   timeout: 5000
 
+  #HACER RAKE DB:MIGRATE PARA QUE FUNCIONE
+
 development:
-  <<: *default
-  database: db/development.sqlite3
+  adapter: postgresql
+  database: TorneosDeportesUnal
+  username: postgres # CAMBIAR CON SU USUARIO
+  password: asdf1234 # CAMBIAR CON SU CONTRASEÑA
+  host: localhost
+  encoding: UTF8
+  pool: 5
+  timeout: 5000
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

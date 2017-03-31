@@ -1,41 +1,65 @@
 class PlayersController < ApplicationController
-  before_action :set_player, only: [:show, :update, :destroy]
+  before_action :set_player, only: [:show, :edit, :update, :destroy]
 
   # GET /players
+  # GET /players.json
   def index
     @players = Player.all
-
-    render json: @players
   end
 
   # GET /players/1
+  # GET /players/1.json
   def show
-    render json: @player
+    @player = Player.find(params[:id])
+  end
+
+  # GET /players/new
+  def new
+    @player = Player.new
+  end
+
+  # GET /players/1/edit
+  def edit
   end
 
   # POST /players
+  # POST /players.json
   def create
     @player = Player.new(player_params)
 
-    if @player.save
-      render json: @player, status: :created, location: @player
-    else
-      render json: @player.errors, status: :unprocessable_entity
+    respond_to do |format|
+      if @player.save
+        format.html { redirect_to @player, notice: 'Player was successfully created.' }
+        format.json { render :show, status: :created, location: @player }
+      else
+        format.html { render :new }
+        format.json { render json: @player.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   # PATCH/PUT /players/1
+  # PATCH/PUT /players/1.json
   def update
-    if @player.update(player_params)
-      render json: @player
-    else
-      render json: @player.errors, status: :unprocessable_entity
+    respond_to do |format|
+      if @player.update(player_params)
+        format.html { redirect_to @player, notice: 'Player was successfully updated.' }
+        format.json { render :show, status: :ok, location: @player }
+      else
+        format.html { render :edit }
+        format.json { render json: @player.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   # DELETE /players/1
+  # DELETE /players/1.json
   def destroy
     @player.destroy
+    respond_to do |format|
+      format.html { redirect_to players_url, notice: 'Player was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
@@ -44,7 +68,7 @@ class PlayersController < ApplicationController
       @player = Player.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+    # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
       params.require(:player).permit(:document, :document_type, :first_name, :last_name, :email, :gender, :semester, :career, :age, :contact_phone, :contact_emergency_phone, :contact_emergency_name, :eps)
     end

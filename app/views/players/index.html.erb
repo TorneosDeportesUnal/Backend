@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Players</h1>
+
+
+<%  [1, 2, 3, 4].each do |number| %>
+  Numero: <% number*2 %>
+<%end%>
+
+<%= @players.inspect %>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Document</th>
+      <th>Document type</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Gender</th>
+      <th>Semester</th>
+      <th>Career</th>
+      <th>Age</th>
+      <th>Contact phone</th>
+      <th>Contact emergency phone</th>
+      <th>Contact emergency name</th>
+      <th>Eps</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= player.document %></td>
+        <td><%= player.document_type %></td>
+        <td><%= player.first_name %></td>
+        <td><%= player.last_name %></td>
+        <td><%= player.email %></td>
+        <td><%= player.gender %></td>
+        <td><%= player.semester %></td>
+        <td><%= player.career %></td>
+        <td><%= player.age %></td>
+        <td><%= player.contact_phone %></td>
+        <td><%= player.contact_emergency_phone %></td>
+        <td><%= player.contact_emergency_name %></td>
+        <td><%= player.eps %></td>
+        <td><%= link_to 'Show', player %></td>
+        <td><%= link_to 'Edit', edit_player_path(player) %></td>
+        <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Player', new_player_path %>
