@@ -18,6 +18,7 @@ class Team < ApplicationRecord
 		select("*")
 	end
 
+<<<<<<< Updated upstream
 	def self.team_by_id(id_team)
 		find_by_id(id_team)
 	end
@@ -45,5 +46,12 @@ class Team < ApplicationRecord
 	def self.team_modality(id_team)
 		joins(:modality).select("modalities.*").where(teams:{id: id_team})
 	end 
+=======
+	def self.team_by_id(team_id)
+		find_by_id(id_team)
+	end
+
+	
+>>>>>>> Stashed changes
 
 end

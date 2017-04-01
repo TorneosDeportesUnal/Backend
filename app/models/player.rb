@@ -10,4 +10,19 @@ class Player < ApplicationRecord
 	validates :gender, inclusion: { in: %w(masculino femenino),
     	message: "masculino o femenino" }
     validates :document, :first_name, :last_name, presence: true	
+
+
+ 	def self.load_players()
+    	includes(:teams)
+  	end
+
+ 	def self.players_by_id(id)
+    	includes(:teams).find_by_id(id)  
+  	end
+
+  def self.players_by_teams()
+    joins(:teams).select("players.*")
+      .group("players.id")
+  end
+
 end
