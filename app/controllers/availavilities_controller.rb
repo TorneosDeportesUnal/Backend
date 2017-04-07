@@ -10,6 +10,7 @@ class AvailavilitiesController < ApplicationController
   # GET /availavilities/1
   # GET /availavilities/1.json
   def show
+    render json: @availavility
   end
 
   # GET /availavilities/new

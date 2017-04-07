@@ -11,8 +11,6 @@ class Team < ApplicationRecord
 	has_many :availavilities
 	
 	has_many :prizes
-	belongs_to :modality
-	belongs_to :tournament	
 	
 	def self.teams(page = 1, per_page = 10)
 		select("*").paginate(:page => page, :per_page => per_page)
