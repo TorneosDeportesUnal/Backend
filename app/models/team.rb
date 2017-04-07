@@ -11,43 +11,38 @@ class Team < ApplicationRecord
 	has_many :availavilities
 	
 	has_many :prizes
-	belongs_to :modality
-	belongs_to :tournament	
 	
-	def self.teams()
-		select("*")
+	def self.teams(page = 1, per_page = 10)
+		select("*").paginate(:page => page, :per_page => per_page)
 	end
 
 	def self.team_by_id(id_team)
 		find_by_id(id_team)
 	end
 
-	def self.team_matches_by_team_id(id_team)
-		joins(:team_matches).select("team_matches.*").where(teams:{id: id_team})
+	def self.team_matches_by_team_id(id_team, page = 1, per_page = 10)
+		joins(:teamseam_matches).select("team_matches.*").where(teams:{id: id_team}).paginate(:page => page, :per_page => per_page)
 	end
 
-	def self.team_groups_by_team_id(id_team)
-		joins(:team_groups).select("team_groups.*").where(teams:{id: id_team})
+	def self.team_groups_by_team_id(id_team, page = 1, per_page = 10)
+		joins(:team_groups).select("team_groups.*").where(teams:{id: id_team}).paginate(:page => page, :per_page => per_page)
 	end	
 
-	def self.team_match_by_match_id(id_match)
-		includes(:team_matches).select("team_matches.*").where(team_matches:{id: id_match})
+	def self.team_match_by_match_id(id_match, page = 1, per_page = 10)
+		includes(:team_matches).select("team_matches.*").where(team_matches:{id: id_match}).paginate(:page => page, :per_page => per_page)
 	end
 
-	def self.team_availavilities(id_team)
-		joins(:availavilities).select("availavilities.*").where(teams:{id: id_team})
+	def self.team_availavilities(id_team, page = 1, per_page = 10)
+		joins(:availavilities).select("availavilities.*").where(teams:{id: id_team}).paginate(:page => page, :per_page => per_page)
 	end
 
-	def self.team_players(id_team)
-		joins(:players).select("players.*").where(teams:{id: id_team})
+	def self.team_players(id_team, page = 1, per_page = 10)
+		joins(:players).select("players.*").where(teams:{id: id_team}).paginate(:page => page, :per_page => per_page)
 	end
 
-	def self.team_modality(id_team)
-		joins(:modality).select("modalities.*").where(teams:{id: id_team})
+	def self.team_modality(id_team, page = 1, per_page = 10)
+		joins(:modality).select("modalities.*").where(teams:{id: id_team}).paginate(:page => page, :per_page => per_page)
 	end 
-	def self.team_by_id(id_team)
-		find_by_id(id_team)
-	end
 
 
 end
