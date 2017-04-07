@@ -23,7 +23,7 @@ class Team < ApplicationRecord
 	end
 
 	def self.team_matches_by_team_id(id_team, page = 1, per_page = 10)
-		joins(:team_matches).select("team_matches.*").where(teams:{id: id_team}).paginate(:page => page, :per_page => per_page)
+		joins(:teamseam_matches).select("team_matches.*").where(teams:{id: id_team}).paginate(:page => page, :per_page => per_page)
 	end
 
 	def self.team_groups_by_team_id(id_team, page = 1, per_page = 10)
