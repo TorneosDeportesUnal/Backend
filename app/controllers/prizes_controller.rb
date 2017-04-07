@@ -10,6 +10,7 @@ class PrizesController < ApplicationController
   # GET /prizes/1
   # GET /prizes/1.json
   def show
+    render json: @prize
   end
 
   # GET /prizes/new

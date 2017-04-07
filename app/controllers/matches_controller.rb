@@ -10,6 +10,7 @@ class MatchesController < ApplicationController
   # GET /matches/1
   # GET /matches/1.json
   def show
+    render json: @match
   end
 
   # GET /matches/new

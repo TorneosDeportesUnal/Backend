@@ -4,5 +4,25 @@ class Group < ApplicationRecord
   	has_many :matches
 
 	has_many :team_groups
-	has_many :teams, through: :team_groups  	
+	has_many :teams, through: :team_groups  
+
+	def self.groups(page = 1, per_page = 10)
+		Group.all.paginate(:page => page, :per_page => per_page)
+	end
+
+	def self.group_by_id(id_group, page = 1, per_page = 10)
+		find_by_id(id_group).paginate(:page => page, :per_page => per_page)
+	end
+
+	def self.group_teams(id_group, page = 1, per_page = 10)
+		joins(:team_groups).select("teams.*").from("teams,groups").where(groups:{id: id_group}).paginate(:page => page, :per_page => per_page)
+	end 
+
+	def self.group_matches(id_group, page = 1, per_page = 10)
+		joins(:matches).select("matches.*").from("groups").where(groups:{id: id_group}).paginate(:page => page, :per_page => per_page)
+	end
+
+	def self.group_positions(id_group, page = 1, per_page = 10)
+		joins(:team_groups).select("teams.*, team_groups.position_in_group").from("teams,groups").where(groups:{id: id_group}).order("position_in_group").paginate(:page => page, :per_page => per_page)
+	end
 end

@@ -10,6 +10,7 @@ class ModalitiesController < ApplicationController
   # GET /modalities/1
   # GET /modalities/1.json
   def show
+    render json: @modality
   end
 
   # GET /modalities/new
