@@ -12,17 +12,17 @@ class Player < ApplicationRecord
     validates :document, :first_name, :last_name, presence: true	
 
 
- 	def self.load_players()
-    	includes(:teams)
+ 	def self.load_players(page = 1, per_page = 10)
+    	includes(:teams).paginate(:page => page, :per_page => per_page)
   	end
 
- 	def self.players_by_id(id)
+ 	def self.players_by_id(id, page = 1, per_page = 10)
     	includes(:teams).find_by_id(id)  
   	end
 
-  def self.players_by_teams()
+  def self.players_by_teams(page = 1, per_page = 10)
     joins(:teams).select("players.*")
-      .group("players.id")
+      .group("players.id").paginate(:page => page, :per_page => per_page)
   end
 
 end
