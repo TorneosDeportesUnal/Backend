@@ -13,7 +13,8 @@ class Team < ApplicationRecord
 	has_many :prizes
 	
 	def self.teams(page = 1, per_page = 10)
-		select("*").paginate(:page => page, :per_page => per_page)
+	 	includes(:team_matches, :matches, :team_groups, :team_players, :prizes, :availavilities, :players)
+				.paginate(:page => page, :per_page => per_page)
 	end
 
 	def self.team_by_id(id_team)
@@ -21,7 +22,7 @@ class Team < ApplicationRecord
 	end
 
 	def self.team_matches_by_team_id(id_team, page = 1, per_page = 10)
-		joins(:teamseam_matches).select("team_matches.*").where(teams:{id: id_team}).paginate(:page => page, :per_page => per_page)
+		joins(:team_matches).select("team_matches.*").where(teams:{id: id_team}).paginate(:page => page, :per_page => per_page)
 	end
 
 	def self.team_groups_by_team_id(id_team, page = 1, per_page = 10)

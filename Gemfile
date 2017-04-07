@@ -7,7 +7,7 @@ end
 
 gem 'faker'
 
-gem 'wdm'
+# gem 'wdm'
 
 gem 'active_model_serializers'
 

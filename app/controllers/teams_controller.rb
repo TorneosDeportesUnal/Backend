@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.all
+    render json: Team.teams, status: :ok
   end
 
   # GET /teams/1
