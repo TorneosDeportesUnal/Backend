@@ -24,7 +24,7 @@ Tournament.create()
 while i<50
 
 	Team.create(id: i, name: Faker::Company.name, coach_name: Faker::Name.name, wins: i%4, loses: i%2)
-	Tournament.create(id: i, begin_date: Faker::Date.backward(4), end_date: Faker::Date.forward(10), team_id: i)
+	Tournament.create(id: i, begin_date: Faker::Date.backward(4), end_date: Faker::Date.forward(10), team_id: i, gender: "masculino", discipline:"futbol")
 	TournamentPhase.create(id: i,phase_type: "grupos", tournament_id: i%10)	
 	Group.create(id: i, name: Faker::Pokemon.name, winners_number: i%5, tournament_phase_id: i%10)
 	Match.create(id: i, game_field_location: Faker::University.name, date: Faker::Date.forward(10), judges: Faker::Name.name, group_id:i%5)
