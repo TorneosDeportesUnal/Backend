@@ -15,7 +15,7 @@ class Group < ApplicationRecord
 	end
 
 	def self.group_teams(id_group, page = 1, per_page = 10)
-		joins(:team_groups).select("teams.*").from("teams,groups").where(groups:{id: id_group}).paginate(:page => page, :per_page => per_page)
+		joins(:team_groups).select("team_groups.*").where(team_groups:{group_id: id_group}).paginate(:page => page, :per_page => per_page)
 	end 
 
 	def self.group_matches(id_group, page = 1, per_page = 10)
