@@ -15,5 +15,4 @@ class Tournament < ApplicationRecord
     	includes(:teams).paginate(:page => page, :per_page => per_page)
   	end
 
-
 end
