@@ -10,5 +10,5 @@ class TeamSerializer < ActiveModel::Serializer
   has_many :groups, through: :team_groups
 
   has_many :availavilities
-
+  belongs_to :tournament
 end

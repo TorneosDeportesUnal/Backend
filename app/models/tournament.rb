@@ -1,7 +1,7 @@
 class Tournament < ApplicationRecord
 	has_many :tournament_phases
 
-	belongs_to :team
+	has_many :teams
 
 	def self.tournament_by_id(id_tournament)
 		find_by_id(id_tournament)

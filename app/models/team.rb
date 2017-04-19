@@ -9,6 +9,7 @@ class Team < ApplicationRecord
 	has_many :groups, through: :team_groups
 
 	has_many :availavilities
+	belongs_to :tournament
 	
 	
 	def self.teams(page = 1, per_page = 10)

@@ -117,8 +117,10 @@ ActiveRecord::Schema.define(version: 20170328224812) do
     t.integer  "wins"
     t.integer  "loses"
     t.integer  "draws"
+    t.integer  "tournament_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.index ["tournament_id"], name: "index_teams_on_tournament_id", using: :btree
   end
 
   create_table "tournament_phases", force: :cascade do |t|
@@ -135,10 +137,8 @@ ActiveRecord::Schema.define(version: 20170328224812) do
     t.datetime "end_date"
     t.string   "gender"
     t.string   "discipline"
-    t.integer  "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_tournaments_on_team_id", using: :btree
   end
 
   add_foreign_key "availavilities", "teams"
@@ -150,6 +150,6 @@ ActiveRecord::Schema.define(version: 20170328224812) do
   add_foreign_key "team_matches", "teams"
   add_foreign_key "team_players", "players"
   add_foreign_key "team_players", "teams"
+  add_foreign_key "teams", "tournaments"
   add_foreign_key "tournament_phases", "tournaments"
-  add_foreign_key "tournaments", "teams"
 end

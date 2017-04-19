@@ -12,7 +12,8 @@ class CreateTeams < ActiveRecord::Migration[5.0]
       t.integer :wins
       t.integer :loses
       t.integer :draws
-
+      t.references :tournament, foreign_key: true
+      
       t.timestamps
     end
   end
