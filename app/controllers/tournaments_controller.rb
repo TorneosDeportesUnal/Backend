@@ -1,4 +1,10 @@
+
+class ApplicationController < ActionController::API
+  include ActionController::MimeResponds
+end
+
 class TournamentsController < ApplicationController
+
   before_action :set_tournament, only: [:show, :edit, :update, :destroy]
 
   # GET /tournaments
@@ -70,6 +76,6 @@ class TournamentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tournament_params
-      params.require(:tournament).permit(:begin_date, :end_date, :gender, :discipline)
+      params.require(:tournament).permit(:id, :gender, :discipline, :begin_date, :end_date)
     end
 end
