@@ -39,6 +39,15 @@ class PlayersController < ApplicationController
     @player.destroy
   end
 
+
+  # GET /players_by_team/1
+  def players_by_team
+    @player = Player.players_by_team_id(params[:id])
+    render json: @player
+  end
+
+
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_player
