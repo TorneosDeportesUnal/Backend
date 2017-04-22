@@ -38,6 +38,11 @@ class TeamGroupsController < ApplicationController
     @team_group.destroy
   end
 
+  def team_groups_by_team_id
+    @groups = TeamGroup.team_groups_by_team_id(params[:id])
+    render json: @groups
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_team_group

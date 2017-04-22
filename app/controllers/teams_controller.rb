@@ -44,6 +44,12 @@ class TeamsController < ApplicationController
     render json: @teams
   end
 
+  # GET /team_matches_by_team/1
+  def team_matches_by_team_id
+    @teams = Team.team_matches_by_team_id(params[:id])
+    render json: @teams
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
 
