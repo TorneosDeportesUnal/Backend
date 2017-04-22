@@ -38,8 +38,15 @@ class TeamsController < ApplicationController
     @team.destroy
   end
 
+  # GET /teams_by_tournament/1
+  def teams_by_tournament
+    @teams = Team.tournament_id(params[:id])
+    render json: @teams
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
+
     def set_team
       @team = Team.find(params[:id])
     end
