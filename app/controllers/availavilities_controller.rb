@@ -38,6 +38,12 @@ class AvailavilitiesController < ApplicationController
     @availavility.destroy
   end
 
+  # GET /team_availavilities/1
+  def team_availavilities
+    @availavility = Availavility.team_availavilities(params[:id])
+    render json: @availavility
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_availavility

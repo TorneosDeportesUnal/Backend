@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
 
   # GET /players
   def index
-    render json: Player.players, status: :ok
+    render json: Player.all, status: :ok
   end
 
   # GET /players/1

@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   get '/teams_by_tournament/:id', to: 'teams#teams_by_tournament', as: 'teams_by_torneo'
   get '/team_matches_by_team/:id', to: 'team_matches#team_matches_by_team_id', as: 'team_matches_by_team_id'
   get '/team_groups_by_team_id/:id', to: 'team_groups#team_groups_by_team_id', as: 'team_groups_by_team_id'
+  get '/team_availavilities/:id', to: 'availavilities#team_availavilities', as: 'team_availavilities'
 
 end
