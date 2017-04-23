@@ -38,6 +38,13 @@ class TournamentPhasesController < ApplicationController
     @tournament_phase.destroy
   end
 
+  #GET /sort_groups_random/1/2/3
+  def draw_groups
+    @groups = TournamentPhase.draw_groups(params[:ng], params[:it], params[:pi])
+    #@groups = Team.tournament_id(params[:it])
+    render json: @groups
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tournament_phase

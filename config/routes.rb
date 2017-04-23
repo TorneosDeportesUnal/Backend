@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get '/team_groups_by_team_id/:id', to: 'team_groups#team_groups_by_team_id', as: 'team_groups_by_team_id'
   get '/team_availavilities/:id', to: 'availavilities#team_availavilities', as: 'team_availavilities'
   get '/players_by_team/:id', to: 'players#players_by_team', as: 'players_by_team_id'
+  get '/draw_groups_random/:ng/:it/:pi', to: 'tournament_phases#draw_groups', as: 'draw_random_groups'
 end
