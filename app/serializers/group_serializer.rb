@@ -1,3 +1,3 @@
 class GroupSerializer < ActiveModel::Serializer
-  attributes :id, :name, :winners_number 
+  attributes :id, :active,:name, :winners_number 
 end

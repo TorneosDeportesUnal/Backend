@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170328224812) do
   create_table "groups", force: :cascade do |t|
     t.string   "name"
     t.integer  "winners_number"
+    t.boolean  "active"
     t.integer  "tournament_phase_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
@@ -117,6 +118,7 @@ ActiveRecord::Schema.define(version: 20170328224812) do
     t.integer  "wins"
     t.integer  "loses"
     t.integer  "draws"
+    t.boolean  "active"
     t.integer  "tournament_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
@@ -126,6 +128,7 @@ ActiveRecord::Schema.define(version: 20170328224812) do
   create_table "tournament_phases", force: :cascade do |t|
     t.string   "phase_type"
     t.integer  "phase_number"
+    t.boolean  "active"
     t.integer  "tournament_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
@@ -138,6 +141,7 @@ ActiveRecord::Schema.define(version: 20170328224812) do
     t.string   "gender"
     t.string   "discipline"
     t.string   "name"
+    t.boolean  "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

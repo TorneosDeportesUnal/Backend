@@ -6,6 +6,7 @@ class CreateTournaments < ActiveRecord::Migration[5.0]
       t.string :gender
       t.string :discipline
       t.string :name
+      t.boolean :active
 
       t.timestamps
     end

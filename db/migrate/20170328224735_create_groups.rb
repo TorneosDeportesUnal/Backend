@@ -3,6 +3,7 @@ class CreateGroups < ActiveRecord::Migration[5.0]
     create_table :groups do |t|
       t.string :name
       t.integer :winners_number
+      t.boolean :active
       t.references :tournament_phase, foreign_key: true
 
       t.timestamps

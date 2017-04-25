@@ -3,6 +3,7 @@ class CreateTournamentPhases < ActiveRecord::Migration[5.0]
     create_table :tournament_phases do |t|
       t.string :phase_type
       t.integer :phase_number
+      t.boolean :active
       t.references :tournament, foreign_key: true
 
       t.timestamps
