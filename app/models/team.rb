@@ -21,25 +21,8 @@ class Team < ApplicationRecord
 		find_by_id(id_team)
 	end
 
-	def self.team_matches_by_team_id(id_team, page = 1, per_page = 10)
-		joins(:team_matches).select("team_matches.*").where(teams:{id: id_team}).paginate(:page => page, :per_page => per_page)
+	def self.tournament_id(id_tournament)
+		select("*").from("teams").where(tournament_id: id_tournament)
 	end
-
-	def self.team_groups_by_team_id(id_team, page = 1, per_page = 10)
-		joins(:team_groups).select("team_groups.*").where(teams:{id: id_team}).paginate(:page => page, :per_page => per_page)
-	end	
-
-	def self.team_match_by_match_id(id_match, page = 1, per_page = 10)
-		includes(:team_matches).select("team_matches.*").where(team_matches:{id: id_match}).paginate(:page => page, :per_page => per_page)
-	end
-
-	def self.team_availavilities(id_team, page = 1, per_page = 10)
-		joins(:availavilities).select("availavilities.*").where(teams:{id: id_team}).paginate(:page => page, :per_page => per_page)
-	end
-
-	def self.team_players(id_team, page = 1, per_page = 10)
-		joins(:players).select("players.*").where(teams:{id: id_team}).paginate(:page => page, :per_page => per_page)
-	end
-
 
 end

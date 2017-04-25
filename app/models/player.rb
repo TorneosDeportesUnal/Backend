@@ -19,7 +19,11 @@ class Player < ApplicationRecord
 
  	def self.players_by_id(id, page = 1, per_page = 10)
     	includes(:teams).find_by_id(id)  
-  	end
+  end
+
+  def self.players_by_team_id(id_team)
+    includes(:team_players).select("players.*").where(team_players:{team_id: id_team})
+  end
 
   def self.players_by_teams(page = 1, per_page = 10)
     joins(:teams).select("players.*")

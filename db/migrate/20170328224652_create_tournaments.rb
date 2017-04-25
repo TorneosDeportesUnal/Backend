@@ -5,6 +5,7 @@ class CreateTournaments < ActiveRecord::Migration[5.0]
       t.datetime :end_date
       t.string :gender
       t.string :discipline
+      t.string :name
 
       t.timestamps
     end

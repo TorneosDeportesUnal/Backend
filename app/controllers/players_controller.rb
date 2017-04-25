@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
 
   # GET /players
   def index
-    render json: Player.players, status: :ok
+    render json: Player.all, status: :ok
   end
 
   # GET /players/1
@@ -38,6 +38,15 @@ class PlayersController < ApplicationController
   def destroy
     @player.destroy
   end
+
+
+  # GET /players_by_team/1
+  def players_by_team
+    @player = Player.players_by_team_id(params[:id])
+    render json: @player
+  end
+
+
 
   private
   # Use callbacks to share common setup or constraints between actions.

@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 20170328224812) do
     t.datetime "end_date"
     t.string   "gender"
     t.string   "discipline"
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
