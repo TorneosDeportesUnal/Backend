@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'rack-attack'
+
 gem 'faker'
 
 gem 'wdm' #SOLO PARA WINDOWS AL PARECER
