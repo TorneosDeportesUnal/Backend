@@ -38,9 +38,9 @@ class TournamentPhasesController < ApplicationController
     @tournament_phase.destroy
   end
 
-  #GET /sort_groups_random/1/2/3
+  #GET /draw_groups_random?numberOfGroups=3&tournamentId=2&phaseId=3
   def draw_groups
-    @groups = TournamentPhase.draw_groups(params[:ng], params[:it], params[:pi])
+    @groups = TournamentPhase.draw_groups(params[:numberOfGroups], params[:tournamentId], params[:phaseId])
     #@groups = Team.tournament_id(params[:it])
     render json: @groups
   end
