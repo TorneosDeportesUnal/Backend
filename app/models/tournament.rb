@@ -7,6 +7,10 @@ class Tournament < ApplicationRecord
 		find_by_id(id_tournament)
 	end
 
+	def self.tournament_by_name(nombre, page=1, per_page=10)
+		select("*").where(name: nombre)
+	end
+
 	def self.teams_by_tournament_id(tournament)
 		joins(:teams).select("teams.id").where(teams:{tournament_id: tournament})
 	end

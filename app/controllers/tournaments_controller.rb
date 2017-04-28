@@ -38,6 +38,11 @@ class TournamentsController < ApplicationController
     @tournament.destroy
   end
 
+  def searchq
+    @tournaments = Tournament.tournament_by_name(params[:q])
+    render json: @tournaments
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tournament

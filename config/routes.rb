@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+
+
   resources :availavilities
   resources :team_matches
   resources :matches
@@ -16,4 +19,11 @@ Rails.application.routes.draw do
   get '/team_availavilities', to: 'availavilities#team_availavilities', as: 'team_availavilities'
   get '/players_by_team', to: 'players#players_by_team', as: 'players_by_team_id'
   get '/draw_groups_random', to: 'tournament_phases#draw_groups', as: 'draw_random_groups'
+  #Adding q parameter
+  get 'group/search', to: 'groups#searchq', as: 'q_in_groups'
+  get 'tournament/search', to: 'tournaments#searchq', as: 'q_in_tournaments'
+  get 'team/search', to: 'teams#searchq', as: 'q_in_teams'
+  get 'player/search', to: 'players#searchq', as: 'q_in_players'
+  
+
 end

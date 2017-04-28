@@ -38,6 +38,11 @@ class TeamsController < ApplicationController
     @team.destroy
   end
 
+  def searchq
+    @teams = Team.search_q(params[:q])
+    render json: @teams
+  end
+
   # GET /teams_by_tournament/1
   def teams_by_tournament
     @teams = Team.tournament_id(params[:id])

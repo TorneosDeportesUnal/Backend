@@ -46,6 +46,10 @@ class PlayersController < ApplicationController
     render json: @player
   end
 
+  def searchq
+    @players = Player.search_q(params[:q])
+    render json: @players
+  end
 
 
   private

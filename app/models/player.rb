@@ -30,4 +30,8 @@ class Player < ApplicationRecord
       .group("players.id").paginate(:page => page, :per_page => per_page)
   end
 
+  def self.search_q(q, page=1, per_page=10)
+    select("*").where("first_name= ? OR last_name= ? OR email=?", q,q,q)
+  end
+
 end
