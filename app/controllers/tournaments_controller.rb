@@ -3,7 +3,7 @@ class TournamentsController < ApplicationController
 
   # GET /tournaments
   def index
-    @tournaments = Tournament.all
+    @tournaments = Tournament.all.order(params[:sort])
 
     render json: @tournaments
   end
@@ -39,7 +39,7 @@ class TournamentsController < ApplicationController
   end
 
   def searchq
-    @tournaments = Tournament.tournament_by_name(params[:q])
+    @tournaments = Tournament.tournament_by_name(params[:q]).order(params[:sort])
     render json: @tournaments
   end
 

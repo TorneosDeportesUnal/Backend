@@ -3,7 +3,7 @@ class TeamsController < ApplicationController
 
   # GET /teams
   def index
-    @teams = Team.all
+    @teams = Team.all.order(params[:sort])
 
     render json: @teams
   end
@@ -41,7 +41,7 @@ class TeamsController < ApplicationController
   end
 
   def searchq
-    @teams = Team.search_q(params[:q])
+    @teams = Team.search_q(params[:q]).order(params[:sort])
     render json: @teams
   end
 
@@ -53,13 +53,13 @@ class TeamsController < ApplicationController
 
   # GET /teams_by_tournament/1
   def teams_by_tournament
-    @teams = Team.tournament_id(params[:id])
+    @teams = Team.tournament_id(params[:id]).order(params[:sort])
     render json: @teams
   end
 
   # GET /team_matches_by_team/1
   def team_matches_by_team_id
-    @teams = Team.team_matches_by_team_id(params[:id])
+    @teams = Team.team_matches_by_team_id(params[:id]).order(params[:sort])
     render json: @teams
   end
 

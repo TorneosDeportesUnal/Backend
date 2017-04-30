@@ -3,7 +3,7 @@ class TeamGroupsController < ApplicationController
 
   # GET /team_groups
   def index
-    @team_groups = TeamGroup.all
+    @team_groups = TeamGroup.all.order(params[:sort])
 
     render json: @team_groups
   end
@@ -39,7 +39,7 @@ class TeamGroupsController < ApplicationController
   end
 
   def team_groups_by_team_id
-    @groups = TeamGroup.team_groups_by_team_id(params[:id])
+    @groups = TeamGroup.team_groups_by_team_id(params[:id]).order(params[:sort])
     render json: @groups
   end
 

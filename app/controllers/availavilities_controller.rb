@@ -3,7 +3,7 @@ class AvailavilitiesController < ApplicationController
 
   # GET /availabilities
   def index
-    @availavilities = Availavility.all
+    @availavilities = Availavility.all.order(params[:sort])
 
     render json: @availavilities
   end
@@ -40,7 +40,7 @@ class AvailavilitiesController < ApplicationController
 
   # GET /team_availavilities/1
   def team_availavilities
-    @availavility = Availavility.team_availavilities(params[:id])
+    @availavility = Availavility.team_availavilities(params[:id]).order(params[:sort])
     render json: @availavility
   end
 

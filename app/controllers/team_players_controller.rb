@@ -3,7 +3,7 @@ class TeamPlayersController < ApplicationController
 
   # GET /team_players
   def index
-    @team_players = TeamPlayer.all
+    @team_players = TeamPlayer.all.order(params[:sort])
 
     render json: @team_players
   end

@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
 
   # GET /players
   def index
-    render json: Player.all, status: :ok
+    render json: Player.all.order(params[:sort]), status: :ok
   end
 
   # GET /players/1
@@ -42,12 +42,12 @@ class PlayersController < ApplicationController
 
   # GET /players_by_team/1
   def players_by_team
-    @player = Player.players_by_team_id(params[:id])
+    @player = Player.players_by_team_id(params[:id]).order(params[:sort])
     render json: @player
   end
 
   def searchq
-    @players = Player.search_q(params[:q])
+    @players = Player.search_q(params[:q]).order(params[:sort])
     render json: @players
   end
 

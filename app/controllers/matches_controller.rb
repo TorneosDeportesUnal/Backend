@@ -3,7 +3,7 @@ class MatchesController < ApplicationController
 
   # GET /matches
   def index
-    @matches = Match.all
+    @matches = Match.all.order(params[:sort])
 
     render json: @matches
   end

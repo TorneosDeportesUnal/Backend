@@ -3,7 +3,7 @@ class TournamentPhasesController < ApplicationController
 
   # GET /tournament_phases
   def index
-    @tournament_phases = TournamentPhase.all
+    @tournament_phases = TournamentPhase.all.order(params[:sort])
 
     render json: @tournament_phases
   end

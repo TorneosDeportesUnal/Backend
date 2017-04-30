@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
 
   # GET /groups
   def index
-    @groups = Group.all
+    @groups = Group.all.order(params[:sort])
 
     render json: @groups
   end
@@ -39,7 +39,7 @@ class GroupsController < ApplicationController
   end
 
   def searchq
-    @groups = Group.group_by_name(params[:q])
+    @groups = Group.group_by_name(params[:q]).order(params[:sort])
     render json: @groups
   end
 
