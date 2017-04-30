@@ -15,6 +15,8 @@ class TeamsController < ApplicationController
 
   # POST /teams
   def create
+    
+    
     @team = Team.new(team_params)
 
     if @team.save
@@ -64,6 +66,6 @@ class TeamsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def team_params
-      params.require(:team).permit(:tournament_id, :name, :coach_name, :delegate, :captain, :uniform_color, :goals_against, :goals_in_favor, :goals_difference, :wins, :loses, :draws)
+      params.require(:team).permit(:id, :tournament_id, :name, :coach_name, :delegate, :captain, :uniform_color, :goals_against, :goals_in_favor, :goals_difference, :wins, :loses, :draws)
     end
 end
