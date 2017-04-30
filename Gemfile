@@ -9,7 +9,7 @@ gem 'rack-attack'
 
 gem 'faker'
 
-#gem 'wdm' #SOLO PARA WINDOWS AL PARECER
+gem 'wdm' #SOLO PARA WINDOWS AL PARECER
 
 gem 'active_model_serializers'
 

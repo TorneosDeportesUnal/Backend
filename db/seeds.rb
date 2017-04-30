@@ -29,7 +29,7 @@ while i<50
 	Match.create(game_field_location: Faker::University.name, date: Faker::Date.forward(10), judges: Faker::Name.name, group_id:i%5)
 	Availavility.create(begin_hour: Faker::Time.forward(23,:morning), end_hour: Faker::Time.forward(24,:morning), team_id: i%4)
 	Player.create(document: i, contact_phone: i, age: i, document_type: "cc", gender: "masculino", first_name: Faker::Name.name, last_name: Faker::Name.name)
-	Player.create(id: i+50, document: i+50, contact_phone: i+100, age: i+100, document_type: "ti", gender: "masculino", first_name: Faker::Name.name, last_name: Faker::Name.name)
+	Player.create(document: i+50, contact_phone: i+100, age: i+100, document_type: "ti", gender: "masculino", first_name: Faker::Name.name, last_name: Faker::Name.name)
 	TeamPlayer.create( player_id: i, team_id: i%4, assist:i%4, yellow_cards: i%6)
 	TeamGroup.create(group_id: i%5, team_id: i%10 )
 	TeamMatch.create(match_id: i%3, team_id: i, goals: i%5)
@@ -37,5 +37,5 @@ while i<50
 
 	i+=1
 end
-Player.create(document: 115, contact_phone: i, age: i, document_type: "cc", gender: "masculino", first_name: "Murray", last_name: Faker::Name.name)
-Player.create( document: 125, contact_phone: i, age: i, document_type: "cc", gender: "masculino", first_name: Faker::Name.name, last_name: "Murray")
+#Player.create(document: 115, contact_phone: i, age: i, document_type: "cc", gender: "masculino", first_name: "Murray", last_name: Faker::Name.name)
+#Player.create( document: 125, contact_phone: i, age: i, document_type: "cc", gender: "masculino", first_name: Faker::Name.name, last_name: "Murray")
