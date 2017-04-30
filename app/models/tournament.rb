@@ -11,6 +11,10 @@ class Tournament < ApplicationRecord
 		select("*").where(name: nombre)
 	end
 
+	def self.active_teams_by_tournament_id(tournament)
+		joins(:teams).select("teams.id").where("tournament_id = ? AND teams.active=true", tournament)
+	end
+
 	def self.teams_by_tournament_id(tournament)
 		joins(:teams).select("teams.id").where(teams:{tournament_id: tournament})
 	end

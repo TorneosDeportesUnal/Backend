@@ -45,6 +45,12 @@ class TeamsController < ApplicationController
     render json: @teams
   end
 
+  def eliminate_team
+    @team = Team.find(params[:id])
+    Team.eliminate_team(params[:id])
+    render json: @team
+  end
+
   # GET /teams_by_tournament/1
   def teams_by_tournament
     @teams = Team.tournament_id(params[:id])

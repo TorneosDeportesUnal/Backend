@@ -14,7 +14,7 @@ class TournamentPhase < ApplicationRecord
 		number_of_groups = number_of_groups.to_i
 		id_tournament = id_tournament.to_i
 		phaseid = phaseid.to_i
-		teams = Tournament.teams_by_tournament_id(id_tournament)
+		teams = Tournament.active_teams_by_tournament_id(id_tournament)
 		groups = Array.new
 		for j in 0..(number_of_groups-1)
 			groups.push(Array.new)

@@ -29,4 +29,10 @@ class Team < ApplicationRecord
 		select("*").from("teams").where(tournament_id: id_tournament)
 	end
 
+	def self.eliminate_team(id_team)
+		team = find(id_team)
+		team.active=false
+		team.save
+	end
+
 end

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/team_availavilities', to: 'availavilities#team_availavilities', as: 'team_availavilities'
   get '/players_by_team', to: 'players#players_by_team', as: 'players_by_team_id'
   get '/draw_groups_random', to: 'tournament_phases#draw_groups', as: 'draw_random_groups'
+  post '/eliminate_team', to: 'teams#eliminate_team', as: 'eliminate_team_id'
   
 
   #Adding q parameter
