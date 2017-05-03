@@ -18,7 +18,7 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.new(tournament_params)
 
     if @tournament.save
-      render json: @tournament, status: :created, location: @tournament
+      render plain: "OK"
     else
       render json: @tournament.errors, status: :unprocessable_entity
     end

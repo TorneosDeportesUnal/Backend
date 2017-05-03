@@ -18,7 +18,7 @@ class AvailavilitiesController < ApplicationController
     @availavility = Availavility.new(availavility_params)
 
     if @availavility.save
-      render json: @availavility, status: :created, location: @availavility
+      render plain: "OK"
     else
       render json: @availavility.errors, status: :unprocessable_entity
     end

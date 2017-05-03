@@ -18,7 +18,7 @@ class TeamGroupsController < ApplicationController
     @team_group = TeamGroup.new(team_group_params)
 
     if @team_group.save
-      render json: @team_group, status: :created, location: @team_group
+      render plain: "OK"
     else
       render json: @team_group.errors, status: :unprocessable_entity
     end
