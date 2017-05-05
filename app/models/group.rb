@@ -1,5 +1,5 @@
 class Group < ApplicationRecord
-	belongs_to :tournament_phase
+	belongs_to :tournament_phase, required: false
 
   	has_many :matches
 

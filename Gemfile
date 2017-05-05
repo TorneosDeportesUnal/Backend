@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'bcrypt', platforms: :ruby
+#gem 'bcrypt', '~> 3.1.10'
 
 gem 'devise_token_auth'
 gem 'omniauth'
@@ -14,6 +15,8 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'rack-attack'
 
 gem 'faker'
+
+gem 'nested_form'
 
 gem 'wdm' #SOLO PARA WINDOWS AL PARECER
 
