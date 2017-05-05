@@ -19,6 +19,7 @@ Team.destroy_all
 Tournament.destroy_all
 
 User.create(email: 'user@example.com', nickname: 'UN', name: 'Unal', password: "asdf1234")
+
 i = 1
 while i<50
 

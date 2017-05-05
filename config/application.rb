@@ -16,6 +16,21 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
+module TorneosUnalApi
+  class Application < Rails::Application
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+          :headers => :any,
+          :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+          :methods => [:get, :post, :options, :delete, :put]
+      end
+    end
+  end
+end
+
 module TorneosUnalApi
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
