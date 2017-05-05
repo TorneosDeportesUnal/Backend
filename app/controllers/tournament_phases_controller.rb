@@ -1,5 +1,5 @@
 class TournamentPhasesController < ApplicationController
-  before_action :authenticate_user!, :except => [:show, :index]
+  #before_action :authenticate_user!, :except => [:show, :index]
   #before_action :set_tournament_phase, only: [:show, :update, :destroy]
 
   # GET /tournament_phases
@@ -54,6 +54,6 @@ class TournamentPhasesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def tournament_phase_params
-      params.require(:tournament_phase).permit(:phase_type, :phase_number, :tournament_id)
+      params.require(:tournament_phase).permit(:active, :phase_type, :phase_number, :tournament_id, groups_attributes: [:active, :name, :winners_number])    
     end
 end

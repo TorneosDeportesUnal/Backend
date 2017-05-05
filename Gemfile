@@ -11,6 +11,9 @@ gem 'omniauth'
 gem 'rack-attack'
 
 gem 'faker'
+gem 'nested_form'
+
+gem 'bcrypt', platforms: :ruby
 
 gem 'wdm' #SOLO PARA WINDOWS AL PARECER
 
