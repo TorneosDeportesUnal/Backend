@@ -1,6 +1,6 @@
 class MatchesController < ApplicationController
   before_action :authenticate_user!, :except => [:show, :index]
-  before_action :set_match, only: [:show, :update, :destroy]
+  #before_action :set_match, only: [:show, :update, :destroy]
 
   # GET /matches
   def index

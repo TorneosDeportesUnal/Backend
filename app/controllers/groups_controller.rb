@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!, :except => [:show, :index]
-  before_action :set_group, only: [:show, :update, :destroy]
+  #before_action :set_group, only: [:show, :update, :destroy]
 
   # GET /groups
   def index

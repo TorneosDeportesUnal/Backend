@@ -1,6 +1,6 @@
 class TournamentsController < ApplicationController
   before_action :authenticate_user!, :except => [:show, :index]
-  before_action :set_tournament, only: [:show, :update, :destroy]
+  #before_action :set_tournament, only: [:show, :update, :destroy]
 
   # GET /tournaments
   def index
