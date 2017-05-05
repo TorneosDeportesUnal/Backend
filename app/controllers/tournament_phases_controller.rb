@@ -1,4 +1,5 @@
 class TournamentPhasesController < ApplicationController
+  before_action :authenticate_user!, :except => [:show, :index]
   before_action :set_tournament_phase, only: [:show, :update, :destroy]
 
   # GET /tournament_phases

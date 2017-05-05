@@ -1,4 +1,5 @@
 class TournamentsController < ApplicationController
+  before_action :authenticate_user!, :except => [:show, :index]
   before_action :set_tournament, only: [:show, :update, :destroy]
 
   # GET /tournaments
@@ -51,6 +52,6 @@ class TournamentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def tournament_params
-      params.require(:tournament).permit(:id, :gender, :discipline, :begin_date, :end_date)
+      params.require(:tournament).permit(:id, :name, :gender, :discipline, :begin_date, :end_date)
     end
 end
