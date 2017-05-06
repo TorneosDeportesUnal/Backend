@@ -54,6 +54,6 @@ class TournamentPhasesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def tournament_phase_params
-      params.require(:tournament_phase).permit(:active, :phase_type, :phase_number, :tournament_id, groups_attributes: [:active, :name, :winners_number])    
+      params.require(:tournament_phase).permit(:active, :phase_type, :phase_number, :tournament_id, groups_attributes: [:active, :name, :winners_number, team_ids:[]])    
     end
 end
