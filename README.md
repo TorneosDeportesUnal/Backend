@@ -2,17 +2,17 @@
 
 *Para solucionar el error de bcrypt de rails se debe hacer desinstalar e instalar de nuevo la gema de bcrypt asi:
 
-En la consola:
-1. gem uninstall bcrypt y seleccionar opcion 3 si existe.
+1. En la consola:
+	gem uninstall bcrypt y seleccionar opcion 3 si existe.
 
-En la consola:
-2. gem uninstall bcrypt-ruby y seleccionar opcion 3 si existe.
+2.En la consola:
+	gem uninstall bcrypt-ruby y seleccionar opcion 3 si existe.
 
-En la consola:
-3. gem install bcrypt --platform=ruby 
+3.En la consola:
+	gem install bcrypt --platform=ruby 
 
-Añadir en Gemfile :
-4. gem 'bcrypt', platforms: :ruby
+4.Añadir en Gemfile :
+	gem 'bcrypt', platforms: :ruby
 
 No se debe hacer nada más.
 
@@ -41,21 +41,21 @@ Estos valores se usarán para la autenticación en cualquier metodo post.
 
 *Un ejemplo de como crear la fase con varios grupos a la vez con un solo json:
 
-{
-	"tournament_phase":{
-		"phase_type":"eliminacion",
-		"active":"true",
-		"tournament_id":"150",
-		"groups_attributes":[
-			{
-				"name":"GRUPOA",
-				"active":"true",
-				"winners_number":"2"
-			},
-			{
-				"name":"GRUPOB",
-				"active":"true",
-				"winners_number":"2"
-			}]		
+	{
+		"tournament_phase":{
+			"phase_type":"eliminacion",
+			"active":"true",
+			"tournament_id":"150",
+			"groups_attributes":[
+				{
+					"name":"GRUPOA",
+					"active":"true",
+					"winners_number":"2"
+				},
+				{
+					"name":"GRUPOB",
+					"active":"true",
+					"winners_number":"2"
+				}]		
+		}
 	}
-}
