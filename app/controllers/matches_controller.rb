@@ -11,6 +11,7 @@ class MatchesController < ApplicationController
 
   # GET /matches/1
   def show
+    @match = Match.find(params[:id])
     render json: @match
   end
 
