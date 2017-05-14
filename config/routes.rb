@@ -12,11 +12,11 @@ Rails.application.routes.draw do
   resources :teams
   resources :players
 
-  get '/tournaments/:id', to: 'show#tournaments', as: 'tournament_by_id'
-  get '/matches/:id', to: 'show#matches', as: 'matches_by_id'
-  get '/groups/:id', to: 'show#groups', as: 'groups_by_id'
-  get '/teams/:id', to: 'show#teams', as: 'teams_by_id'
-  get '/players/:id', to: 'show#players', as: 'players_by_id'
+  get '/tournaments_by_id', to: 'tournaments#show', as: 'tournament_by_id'
+  get '/matches_by_id', to: 'matches#show', as: 'matches_by_id'
+  get '/groups_by_id', to: 'groups#show', as: 'groups_by_id'
+  get '/teams_by_id', to: 'teams#show', as: 'teams_by_id'
+  get '/players_by_id', to: 'players#show', as: 'players_by_id'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
