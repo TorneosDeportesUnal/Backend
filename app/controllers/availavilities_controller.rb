@@ -11,7 +11,7 @@ class AvailavilitiesController < ApplicationController
 
   # GET /availabilities/1
   def show
-    @player = Player.find(params[:id])
+    @player = Availavility.find(params[:id])
     render json: @availavility
   end
 
@@ -28,7 +28,7 @@ class AvailavilitiesController < ApplicationController
 
   # PATCH/PUT /availabilities/1
   def update
-    @player = Player.find(params[:id])
+    @player = Availavility.find(params[:id])
     if @availavility.update(availavility_params)
       render json: @availavility
     else
@@ -38,7 +38,7 @@ class AvailavilitiesController < ApplicationController
 
   # DELETE /availabilities/1
   def destroy
-    @player = Player.find(params[:id])
+    @player = Availavility.find(params[:id])
     @availavility.destroy
   end
 
