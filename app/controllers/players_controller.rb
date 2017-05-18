@@ -19,7 +19,7 @@ class PlayersController < ApplicationController
     @player = Player.new(player_params)
 
     if @player.save
-      render plain: "OK"
+      render json: @player, status: :created, location: @player
     else
       render json: @player.errors, status: :unprocessable_entity
 
@@ -27,6 +27,8 @@ class PlayersController < ApplicationController
   end
 
   def update
+
+    @player = Player.find(params[:id])
     if @player.update(player_params)
       render json: @player
     else
@@ -38,6 +40,7 @@ class PlayersController < ApplicationController
   # DELETE /players/1
 
   def destroy
+    @player = Player.find(params[:id])
     @player.destroy
   end
 

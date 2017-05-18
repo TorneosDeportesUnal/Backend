@@ -1,5 +1,5 @@
 class TeamMatchesController < ApplicationController
-  before_action :authenticate_user!, :except => [:show, :index]
+  #before_action :authenticate_user!, :except => [:show, :index]
   #before_action :set_team_match, only: [:show, :update, :destroy]
 
   # GET /team_matches
@@ -11,6 +11,7 @@ class TeamMatchesController < ApplicationController
 
   # GET /team_matches/1
   def show
+    @player = TeamMatch.find(params[:id])
     render json: @team_match
   end
 
@@ -19,7 +20,7 @@ class TeamMatchesController < ApplicationController
     @team_match = TeamMatch.new(team_match_params)
 
     if @team_match.save
-      render plain: "OK"
+      render json: @team_match, status: :created, location: @team_match
     else
       render json: @team_match.errors, status: :unprocessable_entity
     end
@@ -27,6 +28,7 @@ class TeamMatchesController < ApplicationController
 
   # PATCH/PUT /team_matches/1
   def update
+    @player = TeamMatch.find(params[:id])
     if @team_match.update(team_match_params)
       render json: @team_match
     else
@@ -36,6 +38,7 @@ class TeamMatchesController < ApplicationController
 
   # DELETE /team_matches/1
   def destroy
+    @player = TeamMatch.find(params[:id])
     @team_match.destroy
   end
 

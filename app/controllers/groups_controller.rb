@@ -20,7 +20,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
 
     if @group.save
-      render plain: "OK"
+      render json: @group, status: :created, location: @group
     else
       render json: @group.errors, status: :unprocessable_entity
     end
@@ -28,6 +28,7 @@ class GroupsController < ApplicationController
 
   # PATCH/PUT /groups/1
   def update
+    @group = Group.find(params[:id])
     if @group.update(group_params)
       render json: @group
     else
