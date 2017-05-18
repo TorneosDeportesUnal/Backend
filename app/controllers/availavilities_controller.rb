@@ -1,5 +1,5 @@
 class AvailavilitiesController < ApplicationController
-  before_action :authenticate_user!, :except => [:show, :index]
+  #before_action :authenticate_user!, :except => [:show, :index]
   #before_action :set_availavility, only: [:show, :update, :destroy]
 
   # GET /availabilities
@@ -11,6 +11,7 @@ class AvailavilitiesController < ApplicationController
 
   # GET /availabilities/1
   def show
+    @player = Availavility.find(params[:id])
     render json: @availavility
   end
 
@@ -19,7 +20,7 @@ class AvailavilitiesController < ApplicationController
     @availavility = Availavility.new(availavility_params)
 
     if @availavility.save
-      render plain: "OK"
+      render json: @availavility, status: :created, location: @availavility
     else
       render json: @availavility.errors, status: :unprocessable_entity
     end
@@ -27,6 +28,7 @@ class AvailavilitiesController < ApplicationController
 
   # PATCH/PUT /availabilities/1
   def update
+    @player = Availavility.find(params[:id])
     if @availavility.update(availavility_params)
       render json: @availavility
     else
@@ -36,6 +38,7 @@ class AvailavilitiesController < ApplicationController
 
   # DELETE /availabilities/1
   def destroy
+    @player = Availavility.find(params[:id])
     @availavility.destroy
   end
 

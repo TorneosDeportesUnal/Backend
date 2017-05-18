@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  before_action :authenticate_user!, :except => [:show, :index]
+  #before_action :authenticate_user!, :except => [:show, :index]
   #before_action :set_match, only: [:show, :update, :destroy]
 
   # GET /matches
@@ -20,7 +20,7 @@ class MatchesController < ApplicationController
     @match = Match.new(match_params)
 
     if @match.save
-      render plain: "OK"
+      render json: @match, status: :created, location: @match
     else
       render json: @match.errors, status: :unprocessable_entity
     end
@@ -28,6 +28,8 @@ class MatchesController < ApplicationController
 
   # PATCH/PUT /matches/1
   def update
+
+    @match = Match.find(params[:id])
     if @match.update(match_params)
       render json: @match
     else
@@ -37,6 +39,7 @@ class MatchesController < ApplicationController
 
   # DELETE /matches/1
   def destroy
+    @match = Match.find(params[:id])
     @match.destroy
   end
 

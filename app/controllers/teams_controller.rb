@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :authenticate_user!, :except => [:show, :index]
+  #before_action :authenticate_user!, :except => [:show, :index]
   #before_action :set_team, only: [:show, :update, :destroy]
 
   # GET /teams
@@ -22,7 +22,7 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
 
     if @team.save
-      render plain: "OK"
+      render json: @team, status: :created, location: @team
     else
       render json: @team.errors, status: :unprocessable_entity
     end
@@ -30,6 +30,7 @@ class TeamsController < ApplicationController
 
   # PATCH/PUT /teams/1
   def update
+    @team = Team.find(params[:id])
     if @team.update(team_params)
       render json: @team
     else
@@ -39,6 +40,7 @@ class TeamsController < ApplicationController
 
   # DELETE /teams/1
   def destroy
+    @player = Team.find(params[:id])
     @team.destroy
   end
 
