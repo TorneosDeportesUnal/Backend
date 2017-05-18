@@ -20,7 +20,7 @@ class TeamPlayersController < ApplicationController
     @team_player = TeamPlayer.new(team_player_params)
 
     if @team_player.save
-      render plain: "OK"
+      render json: @team_player, status: :created, location: @team_player
     else
       render json: @team_player.errors, status: :unprocessable_entity
     end
