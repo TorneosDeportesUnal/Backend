@@ -27,6 +27,8 @@ class PlayersController < ApplicationController
   end
 
   def update
+
+    @player = Player.find(params[:id])
     if @player.update(player_params)
       render json: @player
     else

@@ -1,5 +1,5 @@
 class TeamGroupsController < ApplicationController
-  before_action :authenticate_user!, :except => [:show, :index]
+  #before_action :authenticate_user!, :except => [:show, :index]
   #before_action :set_team_group, only: [:show, :update, :destroy]
 
   # GET /team_groups

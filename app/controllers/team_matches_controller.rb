@@ -1,5 +1,5 @@
 class TeamMatchesController < ApplicationController
-  before_action :authenticate_user!, :except => [:show, :index]
+  #before_action :authenticate_user!, :except => [:show, :index]
   #before_action :set_team_match, only: [:show, :update, :destroy]
 
   # GET /team_matches

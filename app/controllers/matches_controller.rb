@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  before_action :authenticate_user!, :except => [:show, :index]
+  #before_action :authenticate_user!, :except => [:show, :index]
   #before_action :set_match, only: [:show, :update, :destroy]
 
   # GET /matches
@@ -28,6 +28,8 @@ class MatchesController < ApplicationController
 
   # PATCH/PUT /matches/1
   def update
+
+    @match = Match.find(params[:id])
     if @match.update(match_params)
       render json: @match
     else

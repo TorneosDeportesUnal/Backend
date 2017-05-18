@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :authenticate_user!, :except => [:show, :index]
+  #before_action :authenticate_user!, :except => [:show, :index]
   #before_action :set_team, only: [:show, :update, :destroy]
 
   # GET /teams
@@ -30,6 +30,7 @@ class TeamsController < ApplicationController
 
   # PATCH/PUT /teams/1
   def update
+    @team = Team.find(params[:id])
     if @team.update(team_params)
       render json: @team
     else

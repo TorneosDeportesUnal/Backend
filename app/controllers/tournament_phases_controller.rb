@@ -27,6 +27,8 @@ class TournamentPhasesController < ApplicationController
 
   # PATCH/PUT /tournament_phases/1
   def update
+
+    @tournament_phase = TournamentPhase.find(params[:id])
     if @tournament_phase.update(tournament_phase_params)
       render json: @tournament_phase
     else

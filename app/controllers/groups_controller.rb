@@ -28,6 +28,7 @@ class GroupsController < ApplicationController
 
   # PATCH/PUT /groups/1
   def update
+    @group = Group.find(params[:id])
     if @group.update(group_params)
       render json: @group
     else
