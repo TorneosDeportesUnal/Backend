@@ -1,6 +1,6 @@
 class PlayersController < ApplicationController
 
-  before_action :authenticate_user!, :except => [:show, :index]
+  #before_action :authenticate_user!, :except => [:show, :index]
   #before_action :set_player, only: [:show, :update, :destroy]
 
   # GET /players
@@ -10,6 +10,7 @@ class PlayersController < ApplicationController
 
   # GET /players/1
   def show
+    @player = Player.find(params[:id])
     render json: @player
   end
 
@@ -26,6 +27,8 @@ class PlayersController < ApplicationController
   end
 
   def update
+
+    @player = Player.find(params[:id])
     if @player.update(player_params)
       render json: @player
     else
@@ -37,6 +40,7 @@ class PlayersController < ApplicationController
   # DELETE /players/1
 
   def destroy
+    @player = Player.find(params[:id])
     @player.destroy
   end
 
@@ -61,6 +65,6 @@ class PlayersController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def player_params
-    params.require(:player).permit(:document, :document_type, :first_name, :last_name, :email, :semester, :career, :gender, :age, :contact_phone, :eps, :contact_emergency_phone, :contact_emergency_name)
+    params.require(:player).permit(:document, :document_type, :first_name, :last_name, :email, :semester, :career, :gender, :age, :contact_phone, :eps, :contact_emergency_phone, :contact_emergency_name,  team_ids:[])
   end
 end

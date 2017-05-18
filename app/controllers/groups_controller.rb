@@ -11,6 +11,7 @@ class GroupsController < ApplicationController
 
   # GET /groups/1
   def show
+    @group = Group.find(params[:id])
     render json: @group
   end
 
@@ -27,6 +28,7 @@ class GroupsController < ApplicationController
 
   # PATCH/PUT /groups/1
   def update
+    @group = Group.find(params[:id])
     if @group.update(group_params)
       render json: @group
     else

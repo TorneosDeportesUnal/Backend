@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  mount_devise_token_auth_for 'User', at: 'auth'
-
-
+  #mount_devise_token_auth_for 'User', at: 'auth'
 
   resources :availavilities
   resources :team_matches
@@ -13,6 +11,14 @@ Rails.application.routes.draw do
   resources :team_players
   resources :teams
   resources :players
+
+  get '/tournaments_by_id', to: 'tournaments#show', as: 'tournament_by_id'
+  get '/matches_by_id', to: 'matches#show', as: 'matches_by_id'
+  get '/groups_by_id', to: 'groups#show', as: 'groups_by_id'
+  get '/teams_by_id', to: 'teams#show', as: 'teams_by_id'
+  get '/players_by_id', to: 'players#show', as: 'players_by_id'
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/teams_by_tournament', to: 'teams#teams_by_tournament', as: 'teams_by_torneo'
   get '/team_matches_by_team', to: 'team_matches#team_matches_by_team_id', as: 'team_matches_by_team_id'

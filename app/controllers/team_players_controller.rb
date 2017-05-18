@@ -1,5 +1,5 @@
 class TeamPlayersController < ApplicationController
-  before_action :authenticate_user!, :except => [:show, :index]
+  #before_action :authenticate_user!, :except => [:show, :index]
   #before_action :set_team_player, only: [:show, :update, :destroy]
 
   # GET /team_players
@@ -11,6 +11,7 @@ class TeamPlayersController < ApplicationController
 
   # GET /team_players/1
   def show
+    @player = TeamPlayer.find(params[:id])
     render json: @team_player
   end
 
@@ -27,6 +28,7 @@ class TeamPlayersController < ApplicationController
 
   # PATCH/PUT /team_players/1
   def update
+    @player = TeamPlayer.find(params[:id])
     if @team_player.update(team_player_params)
       render json: @team_player
     else
@@ -36,6 +38,7 @@ class TeamPlayersController < ApplicationController
 
   # DELETE /team_players/1
   def destroy
+    @player = TeamPlayer.find(params[:id])
     @team_player.destroy
   end
 
