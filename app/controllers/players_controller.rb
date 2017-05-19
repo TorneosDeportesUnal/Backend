@@ -40,7 +40,9 @@ class PlayersController < ApplicationController
   # DELETE /players/1
 
   def destroy
+    TeamPlayer.where(player_id: params[:id]).destroy_all
     @player = Player.find(params[:id])
+    
     @player.destroy
   end
 
