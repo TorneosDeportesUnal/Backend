@@ -20,7 +20,7 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.new(tournament_params)
 
     if @tournament.save
-      render plain: "OK"
+      render json: @tournament, status: :created, location: @tournament
     else
       render json: @tournament.errors, status: :unprocessable_entity
     end
@@ -39,6 +39,7 @@ class TournamentsController < ApplicationController
 
   # DELETE /tournaments/1
   def destroy
+    @tournament = Tournament.find(params[:id])
     @tournament.destroy
   end
 

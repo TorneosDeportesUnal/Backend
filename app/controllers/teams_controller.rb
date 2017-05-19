@@ -22,7 +22,7 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
 
     if @team.save
-      render plain: "OK"
+      render json: @team, status: :created, location: @team
     else
       render json: @team.errors, status: :unprocessable_entity
     end
@@ -40,6 +40,7 @@ class TeamsController < ApplicationController
 
   # DELETE /teams/1
   def destroy
+    @player = Team.find(params[:id])
     @team.destroy
   end
 

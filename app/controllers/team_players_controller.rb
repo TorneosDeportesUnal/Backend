@@ -11,6 +11,7 @@ class TeamPlayersController < ApplicationController
 
   # GET /team_players/1
   def show
+    @player = TeamPlayer.find(params[:id])
     render json: @team_player
   end
 
@@ -19,7 +20,7 @@ class TeamPlayersController < ApplicationController
     @team_player = TeamPlayer.new(team_player_params)
 
     if @team_player.save
-      render plain: "OK"
+      render json: @team_player, status: :created, location: @team_player
     else
       render json: @team_player.errors, status: :unprocessable_entity
     end
@@ -27,6 +28,7 @@ class TeamPlayersController < ApplicationController
 
   # PATCH/PUT /team_players/1
   def update
+    @player = TeamPlayer.find(params[:id])
     if @team_player.update(team_player_params)
       render json: @team_player
     else
@@ -36,6 +38,7 @@ class TeamPlayersController < ApplicationController
 
   # DELETE /team_players/1
   def destroy
+    @player = TeamPlayer.find(params[:id])
     @team_player.destroy
   end
 

@@ -20,7 +20,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
 
     if @group.save
-      render plain: "OK"
+      render json: @group, status: :created, location: @group
     else
       render json: @group.errors, status: :unprocessable_entity
     end
