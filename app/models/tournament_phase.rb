@@ -30,4 +30,29 @@ class TournamentPhase < ApplicationRecord
 		end
 		return groups
 	end
+
+	def self.groups_in_phase(tournament_phase)
+		joins(:groups).select("groups.*").where("tournament_phase_id = ? ", tournament_phase)
+	end
+
+
+	def self.create_matches(phaseId)
+		groups = groups_in_phase(phaseId.to_i)
+		for gr in groups
+			teamss = Group.teams_in_groups(gr.id.to_i)
+			l = teamss.length-1
+			for tea in (0..l)
+				range = (tea..l).to_a
+				print range
+				for team in range
+					if teamss[tea].id != teamss[team].id
+						Match.create(group_id: gr.id.to_i, game_field_location: Faker::University.name, date: Faker::Date.forward(10), judges: Faker::Name.name, team_ids: [teamss[tea].id, teamss[team].id])		
+					end
+				end
+			end
+			#return teamss
+		end
+		return TournamentPhase.find(phaseId)
+	end
+	
 end

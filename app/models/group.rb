@@ -28,4 +28,9 @@ class Group < ApplicationRecord
 	def self.group_positions(id_group, page = 1, per_page = 10)
 		joins(:team_groups).select("teams.*, team_groups.position_in_group").from("teams,groups").where(groups:{id: id_group}).order("position_in_group").paginate(:page => page, :per_page => per_page)
 	end
+
+	def self.teams_in_groups(group)
+		joins(:team_groups).select("team_groups.id").where(team_groups:{group_id: group})
+	end
+
 end
