@@ -38,28 +38,21 @@ class TournamentPhase < ApplicationRecord
 
 	def self.create_matches(phaseId)
 		groups = groups_in_phase(phaseId.to_i)
-		TeamMatch.destroy_all
-		Match.destroy_all
 		for gr in groups
-			#gra = groups_in_phase(phaseId.to_i)
 			teamss = Group.teams_in_groups(gr.id.to_i)
-			for tea in Group.teams_in_groups(gr.id.to_i)
-				Match.create(group_id: gr.id.to_i, game_field_location: Faker::University.name, date: Faker::Date.forward(10), judges: Faker::Name.name)		
-				TeamMatch.create(match_id: Match.last.id, team_id: tea.id.to_i)
+			l = teamss.length-1
+			for tea in (0..l)
+				range = (tea..l).to_a
+				print range
+				for team in range
+					if teamss[tea].id != teamss[team].id
+						Match.create(group_id: gr.id.to_i, game_field_location: Faker::University.name, date: Faker::Date.forward(10), judges: Faker::Name.name, team_ids: [teamss[tea].id, teamss[team].id])		
+					end
+				end
 			end
-		return teamss
-
+			#return teamss
 		end
-
-		#for i in 0..groups.length
-			#for j in 0..Group.teams_in_groups(groups[i].to_i).length
-				#if Group.teams_in_groups(groups[i]).length > 2
-		#			Match.create(group_id: groups[i].id.to_i, game_field_location: Faker::University.name, date: Faker::Date.forward(10), judges: Faker::Name.name)
-					#TeamMatch.create(match_id: Match.last.id, team_id: j)
-				#end
-			#end
-		#end
-		
+		return TournamentPhase.find(phaseId)
 	end
 	
 end

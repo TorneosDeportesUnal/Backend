@@ -29,9 +29,7 @@ Team.create(id: 4, active: true, name: Faker::Company.name, coach_name: Faker::N
 
 TournamentPhase.create(id:1, active: true,phase_type: "grupos", tournament_id: 1)	
 
-Group.create(id: 1, active: true,name: Faker::Pokemon.name, tournament_phase_id: 1)
-Group.create(id: 2, active: true,name: Faker::Pokemon.name, tournament_phase_id: 1)
-Group.create(id: 3, active: true,name: Faker::Pokemon.name, tournament_phase_id: 1)
+Group.create(id: 1, active: true,name: Faker::Pokemon.name, tournament_phase_id: 1)	
 
 TeamGroup.create(group_id: 1, team_id: 1 )
 TeamGroup.create(group_id: 1, team_id: 2 )
