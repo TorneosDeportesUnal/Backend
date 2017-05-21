@@ -29,7 +29,6 @@ class Player < ApplicationRecord
     find_by_id(id_player)
   end
 
-
   def self.players_by_team_id(id_team)
     includes(:team_players).select("players.*").where(team_players:{team_id: id_team})
   end

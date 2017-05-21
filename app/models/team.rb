@@ -21,6 +21,11 @@ class Team < ApplicationRecord
 		find_by_id(id_team)
 	end
 
+	def self.team_by_id_name(idT)
+		team = find_by_id(idT)
+		return team.name
+	end
+
 	def self.search_q(q, page=1, per_page=10)
 		select("*").where("name = ? OR coach_name = ? OR captain = ?", q, q, q)
 	end

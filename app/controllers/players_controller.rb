@@ -5,7 +5,8 @@ class PlayersController < ApplicationController
 
   # GET /players
   def index
-    render json: Player.all.order(params[:sort]), status: :ok
+    @players = Player.all.order(params[:sort])
+    render json: @players
   end
 
   # GET /players/1
