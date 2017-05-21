@@ -1,5 +1,5 @@
 class Player < ApplicationRecord
-	has_many :team_players
+	has_many :team_players, :dependent => :destroy
 	has_many :teams, through: :team_players
 	
 	validates :document,  numericality: { only_integer: true }, uniqueness: true
