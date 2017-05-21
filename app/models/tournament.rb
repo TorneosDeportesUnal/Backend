@@ -1,7 +1,7 @@
 class Tournament < ApplicationRecord
-	has_many :tournament_phases
+	has_many :tournament_phases, :dependent => :destroy
 
-	has_many :teams
+	has_many :teams, :dependent => :destroy
 
 	def self.tournament_by_id(id_tournament)
 		find_by_id(id_tournament)

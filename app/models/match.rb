@@ -1,7 +1,7 @@
 class Match < ApplicationRecord
   belongs_to :group
   
-  has_many :team_matches
+  has_many :team_matches, :dependent => :destroy
   has_many :teams, through: :team_matches
 
   def self.matches(page = 1, per_page = 10)

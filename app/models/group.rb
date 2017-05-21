@@ -1,8 +1,8 @@
 class Group < ApplicationRecord
 	belongs_to :tournament_phase, required: false
-  	has_many :matches
+  	has_many :matches, :dependent => :destroy
 
-	has_many :team_groups
+	has_many :team_groups, :dependent => :destroy
 	has_many :teams, through: :team_groups  
 
 	def self.groups(page = 1, per_page = 10)

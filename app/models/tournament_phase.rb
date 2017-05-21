@@ -1,6 +1,6 @@
 class TournamentPhase < ApplicationRecord
   belongs_to :tournament
-  has_many :groups
+  has_many :groups, :dependent => :destroy
   accepts_nested_attributes_for :groups
 
 
