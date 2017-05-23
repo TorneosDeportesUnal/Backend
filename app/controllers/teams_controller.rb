@@ -39,8 +39,9 @@ class TeamsController < ApplicationController
   end
 
   # DELETE /teams/1
+
   def destroy
-    @player = Team.find(params[:id])
+    @team = Team.find(params[:id])
     @team.destroy
   end
 

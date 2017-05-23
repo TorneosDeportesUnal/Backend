@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  #mount_devise_token_auth_for 'User', at: 'auth'
+  mount_devise_token_auth_for 'User', at: 'auth'
 
   resources :availavilities
   resources :team_matches
@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get '/team_availavilities', to: 'availavilities#team_availavilities', as: 'team_availavilities'
   get '/players_by_team', to: 'players#players_by_team', as: 'players_by_team_id'
   get '/draw_groups_random', to: 'tournament_phases#draw_groups', as: 'draw_random_groups'
+  get '/create_matches', to: 'tournament_phases#create_matches', as: 'create_matches'
   post '/eliminate_team', to: 'teams#eliminate_team', as: 'eliminate_team_id'
   
 

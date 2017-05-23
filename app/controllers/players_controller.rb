@@ -5,7 +5,8 @@ class PlayersController < ApplicationController
 
   # GET /players
   def index
-    render json: Player.all.order(params[:sort]), status: :ok
+    @players = Player.all.order(params[:sort])
+    render json: @players
   end
 
   # GET /players/1
@@ -40,7 +41,9 @@ class PlayersController < ApplicationController
   # DELETE /players/1
 
   def destroy
+    TeamPlayer.where(player_id: params[:id]).destroy_all
     @player = Player.find(params[:id])
+    
     @player.destroy
   end
 

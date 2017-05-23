@@ -50,6 +50,11 @@ class TournamentPhasesController < ApplicationController
     render json: @groups
   end
 
+  def create_matches
+    @matches =  TournamentPhase.create_matches(params[:id])
+    render json: @matches
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tournament_phase

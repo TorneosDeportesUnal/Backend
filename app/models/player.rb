@@ -1,5 +1,5 @@
 class Player < ApplicationRecord
-	has_many :team_players
+	has_many :team_players, :dependent => :destroy
 	has_many :teams, through: :team_players
 	
 	validates :document,  numericality: { only_integer: true }, uniqueness: true
@@ -12,13 +12,21 @@ class Player < ApplicationRecord
     validates :document, :first_name, :last_name, presence: true	
 
 
+  #def self.players(page = 1, per_page = 10)
+  #  includes(:team_players, :teams)
+  #      .paginate(:page => page, :per_page => per_page)
+  #end
+
   def self.players(page = 1, per_page = 10)
-    includes(:team_players, :teams)
-        .paginate(:page => page, :per_page => per_page)
+    select("*").from('players').paginate(:page => page, :per_page => per_page)
   end
 
  	def self.players_by_id(id, page = 1, per_page = 10)
     	includes(:teams).find_by_id(id)  
+  end
+
+  def self.player_by_id(id_player)
+    find_by_id(id_player)
   end
 
   def self.players_by_team_id(id_team)
