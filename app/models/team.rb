@@ -21,6 +21,10 @@ class Team < ApplicationRecord
 		find_by_id(id_team)
 	end
 
+	def self.teams_by_group(id_group)
+		joins(:groups).where(groups:{id:id_group})
+	end
+
 	def self.team_by_id_name(idT)
 		team = find_by_id(idT)
 		return team.name
