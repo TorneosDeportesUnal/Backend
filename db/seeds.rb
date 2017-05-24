@@ -46,6 +46,7 @@ TeamGroup.create(id: 6,group_id: 2, team_id: 6 )
 
 
 
+
 i = 1
 while i<50
 
@@ -57,7 +58,7 @@ while i<50
 	#Availavility.create(id:i, begin_hour: Faker::Time.forward(23,:morning), end_hour: Faker::Time.forward(24,:morning), team_id: i%4)
 	Player.create(id:i, document: i, contact_phone: i, age: i, document_type: "cc", gender: "masculino", first_name: Faker::Name.name, last_name: Faker::Name.name)
 	#Player.create(id:i+50, document: i+50, contact_phone: i+100, age: i+100, document_type: "ti", gender: "masculino", first_name: Faker::Name.name, last_name: Faker::Name.name)
-	#TeamPlayer.create(id:i, player_id: i, team_id: i%4, assist:i%4, yellow_cards: i%6)
+	TeamPlayer.create(id:i, player_id: i, team_id: i%4, assist:i%4, yellow_cards: i%6)
 	#TeamGroup.create(id:i, group_id: i%5, team_id: i%10 )
 	#TeamMatch.create(id:i, match_id: i%3, team_id: i, goals: i%5)
 

@@ -1,5 +1,5 @@
 class Player < ApplicationRecord
-	has_many :team_players
+	has_many :team_players, :dependent => :destroy
 	has_many :teams, through: :team_players
 	
 	validates :document,  numericality: { only_integer: true }, uniqueness: true
@@ -28,7 +28,6 @@ class Player < ApplicationRecord
   def self.player_by_id(id_player)
     find_by_id(id_player)
   end
-
 
   def self.players_by_team_id(id_team)
     includes(:team_players).select("players.*").where(team_players:{team_id: id_team})
