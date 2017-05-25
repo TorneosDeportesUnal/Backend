@@ -8,6 +8,10 @@ class TournamentPhase < ApplicationRecord
 		joins(:tournament).select("*").paginate(:page => page, :per_page => per_page)
 	end
 
+	def self.groups_by_tournament_id(id_tournament)
+		joins(:groups).select("groups.*").where(tournament_id: id_tournament)
+	end
+
 	def self.draw_groups(number_of_groups, id_tournament, phaseid)
 		seed = Random.new_seed
 		number_of_groups = number_of_groups.to_i

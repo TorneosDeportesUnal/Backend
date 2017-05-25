@@ -12,6 +12,10 @@ class Match < ApplicationRecord
   	find_by_id(id_match)
   end
 
+  def self.matches_by_group(id_group)
+    select("*").where(group_id: id_group)
+  end
+
   def self.match_teams(id_match, page = 1, per_page = 10)
   	select("matches.winner_team, matches.loser_team").from("matches").where(matches:{id: id_match}).paginate(:page => page, :per_page => per_page)
   end

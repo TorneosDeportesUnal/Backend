@@ -28,6 +28,9 @@ Rails.application.routes.draw do
   get '/draw_groups_random', to: 'tournament_phases#draw_groups', as: 'draw_random_groups'
   get '/create_matches', to: 'tournament_phases#create_matches', as: 'create_matches'
   post '/eliminate_team', to: 'teams#eliminate_team', as: 'eliminate_team_id'
+  get '/groups_by_tournament', to: 'groups#groups_by_t', as: "groups_by_tournament"
+  get '/teams_by_group', to: 'teams#team_by_group_id', as: "team_by_group"
+  get 'matches_by_group', to: 'matches#matches_by_g', as: "matches_by_group"
   
 
   #Adding q parameter
