@@ -68,6 +68,11 @@ class TeamsController < ApplicationController
     render json: @teams
   end
 
+  def team_by_group_id
+    @teams = Team.teams_by_group(params[:id])
+    render json: @teams
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
 

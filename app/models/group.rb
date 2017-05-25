@@ -9,6 +9,10 @@ class Group < ApplicationRecord
 		Group.all.paginate(:page => page, :per_page => per_page)
 	end
 
+	def self.groups_by_tournament_id(id_tournament)
+		from("groups").joins(:tournament_phase => :tournament).where(tournament_phases: { tournament_id: id_tournament } )
+	end
+
 	def self.group_by_id(id_group, page = 1, per_page = 10)
 		find_by_id(id_group).paginate(:page => page, :per_page => per_page)
 	end
