@@ -11,7 +11,7 @@ class TeamPlayersController < ApplicationController
 
   # GET /team_players/1
   def show
-    @player = TeamPlayer.find(params[:id])
+    @team_player = TeamPlayer.find(params[:id])
     render json: @team_player
   end
 
@@ -28,7 +28,7 @@ class TeamPlayersController < ApplicationController
 
   # PATCH/PUT /team_players/1
   def update
-    @player = TeamPlayer.find(params[:id])
+    @team_player = TeamPlayer.find(params[:id])
     if @team_player.update(team_player_params)
       render json: @team_player
     else
@@ -38,7 +38,7 @@ class TeamPlayersController < ApplicationController
 
   # DELETE /team_players/1
   def destroy
-    @player = TeamPlayer.find(params[:id])
+    @team_player = TeamPlayer.find(params[:id])
     @team_player.destroy
   end
 

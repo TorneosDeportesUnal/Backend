@@ -11,7 +11,7 @@ class TournamentPhasesController < ApplicationController
 
   # GET /tournament_phases/1
   def show
-    @team = TournamentPhase.find(params[:id])
+    @tournament_phase = TournamentPhase.find(params[:id])
     render json: @tournament_phase
   end
 
@@ -39,7 +39,7 @@ class TournamentPhasesController < ApplicationController
 
   # DELETE /tournament_phases/1
   def destroy
-    @team = TournamentPhase.find(params[:id])
+    @tournament_phase = TournamentPhase.find(params[:id])
     @tournament_phase.destroy
   end
 
