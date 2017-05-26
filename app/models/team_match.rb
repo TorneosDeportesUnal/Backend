@@ -7,4 +7,8 @@ class TeamMatch < ApplicationRecord
 		select("*").where(team_id: team)
 	end
 
+	def self.tm_search(teamId, matchId)
+		select("*").where(team_id: teamId, match_id: matchId)
+	end
+
 end

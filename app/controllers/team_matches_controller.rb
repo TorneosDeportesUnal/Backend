@@ -47,9 +47,10 @@ class TeamMatchesController < ApplicationController
     render json: @teams
   end
 
-
-
-
+  def team_match_search
+    @teams = TeamMatch.tm_search(params[:teamId], params[:matchId])
+    render json: @teams
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

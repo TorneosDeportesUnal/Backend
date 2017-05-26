@@ -52,6 +52,11 @@ class TeamGroupsController < ApplicationController
     render json: @team_group
   end
 
+  def team_group_search
+    @teams = TeamGroup.tg_search(params[:teamId], params[:groupId])
+    render json: @teams
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_team_group
