@@ -15,7 +15,7 @@ gem 'nested_form'
 
 gem 'bcrypt', platforms: :ruby
 
-gem 'wdm' #SOLO PARA WINDOWS AL PARECER
+#gem 'wdm' #SOLO PARA WINDOWS AL PARECER
 
 gem 'active_model_serializers'
 

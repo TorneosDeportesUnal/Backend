@@ -65,6 +65,6 @@ class TeamGroupsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def team_group_params
-      params.require(:team_group).permit(:position_in_group, :position_in_group, :group_draw, :group_wins, :group_loses, :group_id, :team_id)
+      params.require(:team_group).permit(:position_in_group, :points_in_group, :group_draw, :group_wins, :group_loses, :group_id, :team_id)
     end
 end
