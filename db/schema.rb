@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20170505154304) do
   end
 
   create_table "team_groups", force: :cascade do |t|
+    t.integer  "points_in_group"
     t.integer  "position_in_group"
     t.integer  "group_draw"
     t.integer  "group_wins"
