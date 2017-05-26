@@ -9,4 +9,8 @@ class TeamGroup < ApplicationRecord
   def self.by_group_id(id_group)
   	select("*").where(group_id: id_group).order(:position_in_group)
   end
+
+  def self.tg_search(teamId, groupId)
+		select("*").where(team_id: teamId, group_id: groupId)
+  end
 end

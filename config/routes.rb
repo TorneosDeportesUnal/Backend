@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   get '/groups_by_tournament', to: 'groups#groups_by_t', as: "groups_by_tournament"
   get '/teams_by_group', to: 'teams#team_by_group_id', as: "team_by_group"
   get 'matches_by_group', to: 'matches#matches_by_g', as: "matches_by_group"
+  get 'team_match_search', to: 'team_matches#team_match_search', as: "team_matches_search"
+  get 'team_group_search', to: 'team_groups#team_group_search', as: "team_groups_search"
+
   
 
   #Adding q parameter
