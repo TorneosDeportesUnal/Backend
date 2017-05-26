@@ -11,7 +11,7 @@ class TeamGroupsController < ApplicationController
 
   # GET /team_groups/1
   def show
-    @player = TeamGroup.find(params[:id])
+    @team_group = TeamGroup.find(params[:id])
     render json: @team_group
   end
 
@@ -28,7 +28,7 @@ class TeamGroupsController < ApplicationController
 
   # PATCH/PUT /team_groups/1
   def update
-    @player = TeamGroup.find(params[:id])
+    @team_group = TeamGroup.find(params[:id])
     if @team_group.update(team_group_params)
       render json: @team_group
     else
@@ -38,13 +38,18 @@ class TeamGroupsController < ApplicationController
 
   # DELETE /team_groups/1
   def destroy
-    @player = TeamGroup.find(params[:id])
+    @team_group = TeamGroup.find(params[:id])
     @team_group.destroy
   end
 
   def team_groups_by_team_id
     @groups = TeamGroup.team_groups_by_team_id(params[:id]).order(params[:sort])
     render json: @groups
+  end
+
+  def show_teams
+    @team_group = TeamGroup.by_group_id(params[:id])
+    render json: @team_group
   end
 
   private

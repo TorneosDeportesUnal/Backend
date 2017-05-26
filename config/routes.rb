@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get '/groups_by_id', to: 'groups#show', as: 'groups_by_id'
   get '/teams_by_id', to: 'teams#show', as: 'teams_by_id'
   get '/players_by_id', to: 'players#show', as: 'players_by_id'
+  get '/group_status', to: 'team_groups#show_teams', as: 'group_status'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
