@@ -25,7 +25,7 @@ development:
   <<: *default
   database: TorneosUnal-api_development
   username: postgres # CAMBIAR CON SU USUARIO
-  password: postgres # CAMBIAR CON SU CONTRASEÑA
+  password: hola20 # CAMBIAR CON SU CONTRASEÑA
   host: localhost
 
   # The specified database role being used to connect to postgres.
